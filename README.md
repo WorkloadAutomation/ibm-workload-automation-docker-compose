@@ -27,7 +27,7 @@ You can access the IBM Workload Automation container images from the Entitled Re
 
 If you want to start the containers via Docker Compose, use the following command to clone the current repository:
 
-    git clone https://github.com/WorkloadAutomation/<repo_da_scegliere_ancora>.git
+    git clone https://github.com/WorkloadAutomation/ibm-workload-automation-docker-compose.git
 
 If you don't have git installed in your environment, download the ZIP file from the main page of the repository:
 
