@@ -1,0 +1,111 @@
+####################################################################
+# Licensed Materials - Property of HCL*
+# (c) Copyright HCL Technologies Ltd. 2018-2020. All rights reserved.
+#
+# * Trademark of HCL Technologies Limited
+####################################################################
+version: '3.5'
+
+services:
+  wa-db2:
+    env_file:
+     - wa.env
+    environment:
+     - DB2INST1_PASSWORD=db2inst1 # Password for DB2 user (DO NOT TOUCH)
+    build: ./db_tools
+    command: ['db2start']
+    ports: # port mapping "external:internal". Internal ports are predefined. 
+     - "50000:50000" #DB2 port
+    container_name: "wa-db2"
+    hostname: wa-db2
+    networks:
+     - wa-net
+    volumes:
+     - wa-db2inst1_home:/home/db2inst1/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+     
+  wa-server:
+    env_file:
+     - wa.env
+    environment:
+     - DB_HOSTNAME=wa-db2 # The host name or IP address of database server (DO NOT TOUCH)
+     - SERVERHOSTNAME=wa-server #  The host name on which the server is contacted by internal dynamic agents (DO NOT TOUCH)
+     - SERVERPORT=31116 #  The port on which the server is contacted by internal dynamic agents (DO NOT TOUCH)     
+     - CREATE_PLAN=true # If true, it executes an automatic JnextPlan at container deploy time
+     - AGT_NAME=WA_SAGT # The name of the agent included in the server
+    image: cp.icr.io/cp/ibm-workload-automation-server:9.5.0.02.20200727
+    depends_on:
+     - wa-db2
+    ports: # port mapping "external:internal". Internal ports are predefined. 
+     - "31116:31116" #HTTPS MASTER
+     - "31111:31111" #NETMAN
+     - "31131:31131" #EIF
+    # - "35131:35131" #EIF SSL
+    container_name: "wa-server"
+    hostname: wa-server
+    networks:
+     - wa-net
+    volumes:
+     - wa-server-data:/home/wauser/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+     
+  wa-console:
+    env_file:
+     - wa.env
+    environment:
+     - DB_HOSTNAME=wa-db2 # (DO NOT TOUCH)
+     - ENGINE_HOSTNAME=wa-server # The host name or IP address of the engine (DO NOT TOUCH)
+    image: cp.icr.io/cp/ibm-workload-automation-console:9.5.0.02.20200727
+    depends_on:
+     - wa-db2
+    ports: # port mapping "external:internal". Internal ports are predefined. 
+     - "9443:9443" #HTTPS DWC
+    container_name: "wa-console"
+    hostname: wa-console
+    networks:
+     - wa-net
+    volumes:
+     - wa-console-data:/home/wauser
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  wa-agent:
+    env_file:
+     - wa.env
+    environment:
+     - SERVERHOSTNAME=wa-server #  The host name of the server (DO NOT TOUCH)
+     - SERVERPORT=31116 #  The port of the server (DO NOT TOUCH)    
+    image: cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.02.20200727
+    depends_on:
+     - wa-server
+    container_name: "wa-agent"
+    hostname: wa-agent
+    networks:
+     - wa-net
+    volumes:
+      - wa-agent-data:/home/wauser
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  wa-db2inst1_home:
+  wa-server-data:
+  wa-console-data:
+  wa-agent-data:
+networks:
+  wa-net:
+    name: wa-net
