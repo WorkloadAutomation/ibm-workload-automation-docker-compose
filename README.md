@@ -29,7 +29,9 @@ If you want to start the containers via Docker Compose, use the following comman
 
     git clone https://github.com/WorkloadAutomation/<repo_da_scegliere_ancora>.git
 
+If you don't have git installed in your environment, download the ZIP file from the main page of the repository:
 
+    Click on "Code" and select "Download ZIP"
 
 If you want customize the installation parameters, modify the **docker-compose.yml** file.
 
