@@ -13,7 +13,6 @@ services:
     environment:
      - DB2INST1_PASSWORD=db2inst1 # Password for DB2 user (DO NOT TOUCH)
     build: ./db_tools
-    command: ['db2start']
     ports: # port mapping "external:internal". Internal ports are predefined. 
      - "50000:50000" #DB2 port
     container_name: "wa-db2"
