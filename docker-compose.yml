@@ -17,7 +17,7 @@ services:
     ports: # port mapping "external:internal". Internal ports are predefined. 
      - "50000:50000" #DB2 port
     container_name: "wa-db2"
-    privileged: false
+    privileged: true
     hostname: wa-db2
     networks:
      - wa-net
