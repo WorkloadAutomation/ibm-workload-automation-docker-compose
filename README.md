@@ -35,14 +35,24 @@ If you don't have git installed in your environment, download the ZIP file from 
 
 If you want customize the installation parameters, modify the **docker-compose.yml** file.
 
+Accept the product licenses by setting the **LICENSE** parameter to **"accept"** in the **wa.env** file located in the container package as follows: **LICENSE=accept**
+
 In the directory where  the **docker-compose.yml** file has been located, you can start the containers by running the following command:
 
     docker-compose up -d
 
-Once the command has been launched, be sure that the containers are started by checking the docker logs.
+Once the command has been launched, be sure that the containers are started using the following command:
+
+    docker ps 
+
+You can optionally check the container logs using the following command:
+
+    docker-compose logs -f <container_name>
+
+Where container_name can be: wa-server, wa-console or wa-agent.
 
 ## Supported Docker versions
-This image is officially supported on Docker version 1.11.0.
+This image is officially supported on Docker version 1.11.0 or later.
 
 Support for older versions (down to 1.11.0) is provided on a best-effort basis.
 
