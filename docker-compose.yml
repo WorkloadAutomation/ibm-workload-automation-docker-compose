@@ -63,7 +63,7 @@ services:
     environment:
      - DB_HOSTNAME=wa-db2 # (DO NOT TOUCH)
      - ENGINE_HOSTNAME=wa-server # The host name or IP address of the engine (DO NOT TOUCH)
-     - DB_NAME=DWC
+     - DB_NAME=DWC # For DB2/IDS/MSSQL is the name of console database. For ORACLE is the Oracle Service Name. Valid only for DB2/IDS/MSSQL/ORACLE
     image: cp.icr.io/cp/ibm-workload-automation-console:9.5.0.02.20200727
     depends_on:
      - wa-db2
