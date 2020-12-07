@@ -53,7 +53,7 @@ Where container_name can be: wa-server, wa-console or wa-agent.
 
 ### Notes
 
-If your server component uses a timezone different from the default timezone, then to avoid problems with the FINAL job stream, you must update MAKEPLAN within the **DOCOMMAND**, specifying the timezone parameter and value. For example, if you are using the America/Los Angeles timezone, then it must be specified as follows:
+If your server component uses a timezone different from the default timezone, then to avoid problems with the FINAL job stream, you must update MAKEPLAN within the **DOCOMMAND**, specifying the **timezone** parameter and value. For example, if you are using the America/Los Angeles timezone, then it must be specified as follows:
 
     $JOBS
 
