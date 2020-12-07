@@ -51,6 +51,21 @@ You can optionally check the container logs using the following command:
 
 Where container_name can be: wa-server, wa-console or wa-agent.
 
+### Notes
+
+If your server component uses a timezone different from the default timezone, then to avoid problems with the FINAL job stream, you must update MAKEPLAN within the **DOCOMMAND**, specifying the timezone parameter and value. For example, if you are using the America/Los Angeles timezone, then it must be specified as follows:
+
+    $JOBS
+
+    WA_WA-SERVER_XA#MAKEPLAN
+    DOCOMMAND "TODAY_DATE=`${UNISONHOME}/bin/datecalc today pic YYYYMMDD`; ${UNISONHOME}/MakePlan -to `${UNISONHOME}/bin/datecalc ${TODAY_DATE}070
+    0 + 1 day + 2 hours pic MM/DD/YYYY^HHTT` timezone America/Los_Angeles"
+    STREAMLOGON wauser
+    DESCRIPTION "Added by composer."
+    TASKTYPE OTHER
+    SUCCOUTPUTCOND CONDSUCC "(RC=0) OR (RC=4)"
+    RECOVERY STOP
+
 ## Supported Docker versions
 This image is officially supported on Docker version 1.11.0 or later.
 
