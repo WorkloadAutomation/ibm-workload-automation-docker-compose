@@ -19,7 +19,7 @@ You can access the IBM Workload Automation container images from the Entitled Re
 1. Access the entitled registry. Log in to [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) with the IBMid and password that are associated with the entitled software.
 
 2.  In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
-3.  Execute the following command to login into the IBM Entitled Registry:
+3.  Execute the following command to log in into the IBM Entitled Registry:
       
         docker login -u cp -p <your_entitled_key> cp.icr.io
 
