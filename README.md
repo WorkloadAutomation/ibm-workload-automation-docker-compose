@@ -3,7 +3,14 @@
 ## Introduction
 Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. From a single point of control, it supports multiple platforms and provides advanced integration with enterprise applications including ERP, Business Analytics, File Transfer, Big Data, and Cloud applications.
 
-Docker adoption ensures standardization of your workload scheduling environment and provides an easy method to replicate environments quickly in development, build, test, and production environments, speeding up the time it takes to get from build to production significantly. Install your environment using Docker to improve scalability, portability, and efficiency
+Docker adoption ensures standardization of your workload scheduling environment and provides an easy method to replicate environments quickly in development, build, test, and production environments, speeding up the time it takes to get from build to production significantly. Install your environment using Docker to improve scalability, portability, and efficiency.
+
+This readme file contains the high-level steps to deploy all of the Workload Automation product components. However, for more detailed information about configuring a specific component, see:
+
+* [Server](readmes/readme_SERVER.md)
+* [Console](readmes/readme_CONSOLE.md)
+* [Dynamic Agent](readmes/readme_DYNAMIC_AGENT.md)
+* [Zcentric Agent](readmes/readme_ZCENTRIC_AGENT.md)
 
 ## Accessing the container images
 
@@ -66,6 +73,8 @@ If your server component uses a timezone different from the default timezone, th
     SUCCOUTPUTCOND CONDSUCC "(RC=0) OR (RC=4)"
     RECOVERY STOP
 
+
+      
 ## Supported Docker versions
 This image is officially supported on Docker version 19.x or later.
 
