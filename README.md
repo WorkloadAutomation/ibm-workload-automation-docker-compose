@@ -36,19 +36,19 @@ If you want to start the containers via Docker Compose, use the following comman
 
     git clone https://github.com/WorkloadAutomation/ibm-workload-automation-docker-compose.git
 
-If you don't have git installed in your environment, download the ZIP file from the main page of the repository:
+If you do not have git installed in your environment, download the ZIP file from the main page of the repository:
 
     Click on "Code" and select "Download ZIP"
 
-If you want customize the installation parameters, modify the **docker-compose.yml** file.
+If you want to customize the installation parameters, modify the **docker-compose.yml** file.
 
 Accept the product licenses by setting the **LICENSE** parameter to **"accept"** in the **wa.env** file located in the container package as follows: **LICENSE=accept**
 
-In the directory where  the **docker-compose.yml** file has been located, you can start the containers by running the following command:
+In the directory where  the **docker-compose.yml** file is located, you can start the containers by running the following command:
 
     docker-compose up -d
 
-Once the command has been launched, be sure that the containers are started using the following command:
+To verify that the containers are started, run the following command:
 
     docker ps 
 
@@ -56,7 +56,7 @@ You can optionally check the container logs using the following command:
 
     docker-compose logs -f <container_name>
 
-Where container_name can be: wa-server, wa-console or wa-agent.
+Where, <container_name> represents one of the following: wa-server, wa-console or wa-agent.
 
 ### Notes
 
@@ -78,17 +78,17 @@ If your server component uses a timezone different from the default timezone, th
 ## Supported Docker versions
 This image is officially supported on Docker version 19.x or later.
 
-Support for older versions (down to 19.x) is provided on a best-effort basis.
+Support for versions earlier than 19.x is provided on a best-effort basis.
 
 Please see the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon. 
 
 ## Limitations
-The owner of all product files is the wauser user, thus the product doesn't run as root, but as wauser only. Don't perform the login as root to start processes or execute other commands such as Jnextplan, otherwise it might create some issues.
+The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or execute other commands such as Jnextplan, otherwise it might create some issues.
 
 Limited to amd64 and Linux on Z platforms.
 
 ## Additional Information
-For additional information on using the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 ## License
 The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BNFE4V). Note that this license does not permit further distribution.
