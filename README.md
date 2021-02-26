@@ -16,7 +16,7 @@ This readme file contains the high-level steps to deploy all of the Workload Aut
 
 You can access the IBM Workload Automation container images from the Entitled Registry:
 
-1. Access to the entitled registry. Log in to [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) with the IBMid and password that are associated with the entitled software.
+1. Access the entitled registry. Log in to [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) with the IBMid and password that are associated with the entitled software.
 
 2.  In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
 3.  Execute the following command to login into the IBM Entitled Registry:
