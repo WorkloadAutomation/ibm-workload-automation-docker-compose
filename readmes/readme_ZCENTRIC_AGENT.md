@@ -1,3 +1,5 @@
+
+
 # Workload Automation z-centric Agent
 
 ## Introduction
@@ -13,11 +15,11 @@ z-centric Agent has the following restriction:
 
 
 ## Supported tags
-- 9.5.0.03.20210326
+- 9.5.0.04.20210709
 - 9.5.0.02.20200727 (only for distributed)
  
  ## Supported platforms
- The supported operating systems are: Windows, Linux Intel based 64-bit, and Linux on Z.
+ The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
  
 
 
@@ -39,7 +41,7 @@ You can access the z-centric Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.03.20210218
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.04.20210709
 
 
 
@@ -100,11 +102,11 @@ You can optionally check the container logs using the following command:
 To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
     docker run \
-        -d -e AGT_NAME=agent_name \
-        -e LICENSE=ACCEPT \
-	    -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
-        -v workload-automation-agent-zcentric-data:/home/wauser \
-        cp.icr.io/cp/ibm-workload-automation-agent-zcentric:9.5.0.03.20210218
+	  -d -e AGT_NAME=agent_name \
+	  -e LICENSE=ACCEPT \
+	  -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
+	  -v workload-automation-agent-zcentric-data:/home/wauser \
+	  ibm-workload-automation-agent-zcentric:9.5.0.04.<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
@@ -136,6 +138,11 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 
 
 
+
+
+
+
+
 ## Supported Docker versions
 This image is officially supported on Docker version 19.xx.xx, or later.
 
@@ -153,9 +160,8 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BW5RTA). Note that this license does not permit further distribution.
-
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C3UKVB). Note that this license does not permit further distribution.
