@@ -5,17 +5,20 @@
 # Workload Automation Console
 
 ## Introduction
-Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. From a single point of control, it supports multiple platforms and provides advanced integration with enterprise applications including ERP, Business Analytics, File Transfer, Big Data, and Cloud applications.
+Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. 
+
+From a single point of control, it supports multiple platforms and provides advanced integration with enterprise applications including ERP, Business Analytics, File Transfer, Big Data, and Cloud applications. See [Installing Automation Hub integrations](installing-automation-hub-integrations) for more information about integrating third-party plug-ins and integrations.
+
 
 Docker adoption ensures standardization of your workload scheduling environment and provides an easy method to replicate environments quickly in development, build, test, and production environments, speeding up the time it takes to get from build to production significantly. Install your environment using Docker to improve scalability, portability, and efficiency.
 
 
 ## Supported tags
-- 9.5.0.03.20210326
+- 9.5.0.04.20210709
 - 9.5.0.02.20200727 (only for distributed)
  
  ## Supported platforms
- The supported operating systems are: Windows, Linux Intel based 64-bit, and Linux on Z.
+ The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
  
 
 ## Accessing the container images
@@ -35,7 +38,7 @@ You can access the Console container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.03.20210218
+* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.04.20210709
 
 
 ### From IBM Fix Central
@@ -100,7 +103,7 @@ The IBM Workload Automation container has the following prerequisites:
 
    For example, use the following command to create a DB2 instance and schema:   
 
-       docker run --rm cp.icr.io/cp/ibm-workload-automation-console:9.5.0.03.20210218 cat /opt/dwc/tools/create_database.sql > create_database.sql
+       docker run --rm ibm-workload-automation-console:9.5.0.04 cat /opt/dwc/tools/create_database.sql > create_database.sql
        
    Copy the "create_database.sql" file on the workstation where the DB2 has been installed, perform a login as administrator and run the following command:
  
@@ -120,7 +123,7 @@ To start the container from the command-line, launch the following command by ad
 		-e DB_ADMIN_USER=db_admin_user \
 		-e DB_ADMIN_PASSWORD=db_admin_password \
 		-v workload-automation-console-data:/home/wauser \
-		ibm-workload-automation-console:9.5.0.03.20210218
+		ibm-workload-automation-console:9.5.0.04.\<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
@@ -195,7 +198,7 @@ To enable SSO between console and server, LTPA tokens must be the same. The foll
 
 To create new LTPA token, issue the following command:
 
-     docker run -i --rm -v <host_dir>:/output cp.icr.io/cp/ibm-workload-automation-console:9.5.0.03.20210218 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
+     docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:9.5.0.04 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
 
   where:
   - **<host_dir>** is an existing folder on the local machine where docker runs
@@ -208,6 +211,110 @@ The "ltpa.keys" file must be placed into the volume that stores customized SSL c
 In both server and console charts, useCustomizedCert property must be set on "true".
 
 The "wa_ltpa.xml" file must be placed in the volume that stores all custom liberty configuration (on both server and console charts).
+
+## Installing Automation Hub integrations  
+
+You can extend Workload Automation with a number of out-of-the-box integrations, or plug-ins. Complete documentation for the integrations is available on [Automation Hub](https://www.yourautomationhub.io/). Use this procedure to integrate only the integrations you need to automate your business workflows.
+
+You can also extend Workload Automation with custom plug-ins or integrations that you create. For information about creating a custom plug-in and deploying the plug-in see [Workload Automation Lutist Development Kit](https://www.yourautomationhub.io/toolkit) on Automation Hub.
+
+**Note:** You must perform this procedure before deploying the product components. Any changes made post-installation are applied the next time you perform an upgrade.
+
+By default, your HCL Workload Automation deployment includes a number of integrations that are ready to be used after you deploy the server and console containers. The integrations available are defined in a **.properties** file. Create and customize the **.properties** file that pertains to your environment to exclude any integrations you do not need.
+
+To exclude an integration, follow these steps:
+
+1. Depending on your environment, whether it is a distributed environment or a z/OS environment, create a **.properties** file named **plugins.properties** in the same directory where the docker-compose file resides with the following content:
+
+		com.hcl.scheduling.agent.kubernetes
+		com.hcl.scheduling.agent.udeploycode
+		com.hcl.wa.plugin.ansible
+		com.hcl.wa.plugin.automationanywherebotrunner
+		com.hcl.wa.plugin.automationanywherebottrader
+		com.hcl.wa.plugin.awscloudformation
+		com.hcl.wa.plugin.awslambda
+		com.hcl.wa.plugin.awssns
+		com.hcl.wa.plugin.awssqs
+		com.hcl.wa.plugin.azureresourcemanager
+		com.hcl.wa.plugin.blueprism
+		com.hcl.wa.plugin.compression
+		com.hcl.wa.plugin.encryption
+		com.hcl.wa.plugin.gcpcloudstorage
+		com.hcl.wa.plugin.gcpdeploymentmanager
+		com.hcl.wa.plugin.jdedwards
+		com.hcl.wa.plugin.obiagent
+		com.hcl.wa.plugin.odiloadplan
+		com.hcl.wa.plugin.oraclehcmdataloader
+		com.hcl.wa.plugin.oracleucm
+		com.hcl.wa.plugin.saphanaxsengine
+		com.hcl.waPlugin.chefbootstrap
+		com.hcl.waPlugin.chefrunlist
+		com.hcl.waPlugin.obirunreport
+		com.hcl.waPlugin.odiscenario
+		com.ibm.scheduling.agent.apachespark
+		com.ibm.scheduling.agent.aws
+		com.ibm.scheduling.agent.azure
+		com.ibm.scheduling.agent.biginsights
+		com.ibm.scheduling.agent.centralizedagentupdate
+		com.ibm.scheduling.agent.cloudant
+		com.ibm.scheduling.agent.cognos
+		com.ibm.scheduling.agent.database
+		com.ibm.scheduling.agent.datastage
+		com.ibm.scheduling.agent.ejb
+		com.ibm.scheduling.agent.filetransfer
+		com.ibm.scheduling.agent.hadoopfs
+		com.ibm.scheduling.agent.hadoopmapreduce
+		com.ibm.scheduling.agent.j2ee
+		com.ibm.scheduling.agent.java
+		com.ibm.scheduling.agent.jobdurationpredictor
+		com.ibm.scheduling.agent.jobmanagement
+		com.ibm.scheduling.agent.jobstreamsubmission
+		com.ibm.scheduling.agent.jsr352javabatch
+		com.ibm.scheduling.agent.mqlight
+		com.ibm.scheduling.agent.mqtt
+		com.ibm.scheduling.agent.mssqljob
+		com.ibm.scheduling.agent.oozie
+		com.ibm.scheduling.agent.openwhisk
+		com.ibm.scheduling.agent.oracleebusiness
+		com.ibm.scheduling.agent.pichannel
+		com.ibm.scheduling.agent.powercenter
+		com.ibm.scheduling.agent.restful
+		com.ibm.scheduling.agent.salesforce
+		com.ibm.scheduling.agent.sapbusinessobjects
+		com.ibm.scheduling.agent.saphanalifecycle
+		com.ibm.scheduling.agent.softlayer
+		com.ibm.scheduling.agent.sterling
+		com.ibm.scheduling.agent.variabletable
+		com.ibm.scheduling.agent.webspheremq
+		com.ibm.scheduling.agent.ws
+
+4) Delete the lines related to the integrations you do not want to make available in your environment. The remaining integrations will be integrated into Workload Automation at deployment time. Save your changes to the file.
+
+   You can always refer back to this readme file and add an integration back into the file in the future. The integration becomes available the next time you update the console and server containers.
+
+5) In the docker-compose.yml file, add the following entry under the volume section of the wa-console component so that it appears as follows:
+
+		volumes:
+		- wa-console-data:/home/wauser/
+		- ./plugins.properties:/opt/wautils/config/plugins.properties
+	
+6) In the volumes section at the end of the file, add an additional line with "plugins.properties:" so that the section appears as follows:
+
+		volumes:
+		 wa-db2inst1_home:
+		 wa-server-data:
+		 wa-console-data:
+		 wa-agent-data:
+		 plugins.properties:
+
+7) Save the changes to the docker-composer.yml file.
+
+Proceed to deploy the product components. After the deployment, you can include jobs related to these integrations when defining your workload.	
+
+## Metrics Monitoring
+
+Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana. If you use Grafana, you can take advantage of the preconfigured dashboard that is available with the deployment of the Dynamic Workload Console and the server  components. For more information about the metrics available, see [Metrics monitoring](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ref/awsrgmonprom.html). In a Docker environment, by default, access to the metrics does not require authentication. However, if you want to specify a different user that can access the metrics securely using credentials, modify the prometheus.xml file that you will find automatically created in a Docker environment, adding the additional users.
+
 
 ## Supported Docker versions
 This image is officially supported on Docker version 19.xx.xx, or later.
@@ -230,5 +337,4 @@ For additional information about how to use the IBM Workload Automation, see the
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BW6R23). Note that this license does not permit further distribution.
-
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C3UKGG). Note that this license does not permit further distribution.
