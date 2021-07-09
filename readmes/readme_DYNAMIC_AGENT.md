@@ -14,11 +14,11 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
-- 9.5.0.03.20210326
+- 9.5.0.04.20210709
 - 9.5.0.02.20200727 (only for distributed)
  
  ## Supported platforms
- The supported operating systems are: Windows, Linux Intel based 64-bit, and Linux on Z.
+ The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
  
 
 
@@ -39,7 +39,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.03.20210218
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.04.20210709
 
 
 ### From IBM Fix Central
@@ -104,7 +104,7 @@ To start the container from the command-line, launch the following command by ad
         -e SERVERPORT=server_port \
         -e LICENSE=ACCEPT \
         -v workload-automation-agent-dynamic-data:/home/wauser \
-        cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.03.20210218
+        ibm-workload-automation-agent-dynamic:9.5.0.04.<release_date>
 
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
@@ -135,11 +135,13 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | BKMSERVERHOSTNAME  | The hostname of the backup master domain manager                                                                                                                                                                                                                              | no          | wabkm.demo.com    | 
 | MAXWAITONEXIT      | The number of seconds the Agent waits for the completion of all processes before stopping the container. The Default value is 60 sec, the maximum value is 3600 sec                                                                                                           | no          | 60 sec            |   
 | TZ                 | If used, it sets the TZ operating system environment variable                                                                                                                                                                                                                 | no          | Europe/Rome       |
+| WA_USER_ENGINE                 | The user for which you have installed the master domain manager to which the agent is connecting                                                                                                                                                                                                                 | no          | wa_user       |
+| WA_USER_ENGINE_PASSWORD                 | The password for the user for which you have installed the master domain manager to which the agent is connecting                                                                                                                                                                                                                 | no          | wa_user_password       |
 
 
 
 
-## Deploying and starting the IBM Workload Automation dynamic agent container on Red Hat OpenShift
+## Deploying and starting the IBM Workload Automation Agent dynamic agent container on Red Hat OpenShift
 
 Ensure you have installed Red Hat OpenShift v3.10 or later.
 
@@ -185,7 +187,7 @@ If you want to use custom Agent certificates, uncomment the "BEGIN SECTION - Cer
       oc create secret generic release_name-secret --from-file=TWSClientKeyStoreJKS.jks --from-file=TWSClientKeyStoreJKS.sth --from-file=TWSClientKeyStore.kdb --from-file=TWSClientKeyStore.sth
 
     
-where TWSClientKeyStoreJKS.jks  TWSClientKeyStoreJKS.sth  TWSClientKeyStore.kdb  TWSClientKeyStore.sth are the container keystore and stash file containing your customized certificates.
+where TWSClientKeyStoreJKS.jks Â TWSClientKeyStoreJKS.sth Â TWSClientKeyStore.kdb Â TWSClientKeyStore.sth are the container keystore and stash file containing your customized certificates.
 For details about custom certificates, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadMDMDAcomm.htm) documentation.
     
     See an example where `release_name` = myname and `namespace` = default: 
@@ -226,9 +228,8 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BW5RTA). Note that this license does not permit further distribution.
-
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C3UKVB). Note that this license does not permit further distribution.
