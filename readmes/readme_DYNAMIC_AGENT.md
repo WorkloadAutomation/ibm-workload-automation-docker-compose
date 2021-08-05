@@ -14,7 +14,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
-- 9.5.0.04.20210709
+- 9.5.0.04.20210804
 - 9.5.0.02.20200727 (only for distributed)
  
  ## Supported platforms
