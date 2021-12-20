@@ -9,18 +9,19 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 z-centric Agent has the following restriction:
 
- - Single node instance 
+ - Single node instance
+
 
 
 
 
 ## Supported tags
+- 9.5.0.05.20211217
 - 9.5.0.04.20210804
-- 9.5.0.02.20200727 (only for distributed)
- 
+
  ## Supported platforms
  The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
- 
+
 
 
 
@@ -35,13 +36,13 @@ You can access the z-centric Agent container image from the Entitled Registry:
 2.  In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
 
 3.  Run the following command to login into the IBM Entitled Registry:
-      
+
         docker login -u cp -p <your_entitled_key> cp.icr.io
 	
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.04.20210709
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.05.20211217
 
 
 
@@ -50,8 +51,9 @@ You can access the z-centric Agent container image from the Entitled Registry:
 If you are accessing the images from IBM Fix Central, use the following command to upload the image to your local Docker environment:
 
      docker load -i <tar_name>
-	 
+
   where <tar_name> is the name of the .tar file containing the image.
+
 
 
 Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/distr/src_pi/awspizLinuxDeployments.html)
@@ -61,8 +63,8 @@ Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploy
 
 
 
-## Getting Started 
-You can deploy the IBM Workload Automation containers using either Docker compose or Docker run. For both of these methods, ensure you download and install [Docker](https://www.docker.com). 
+## Getting Started
+You can deploy the IBM Workload Automation containers using either Docker compose or Docker run. For both of these methods, ensure you download and install [Docker](https://www.docker.com).
 
 ### Getting started with Docker compose
 
@@ -90,7 +92,7 @@ In the directory where  the **docker-compose.yml** file has been located, you ca
 
 Once the command has been launched, be sure that the containers are started using the following command:
 
-    docker ps 
+    docker ps
 
 You can optionally check the container logs using the following command:
 
@@ -101,24 +103,25 @@ You can optionally check the container logs using the following command:
 
 To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
-    docker run \
-	  -d -e AGT_NAME=agent_name \
-	  -e LICENSE=ACCEPT \
-	  -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
-	  -v workload-automation-agent-zcentric-data:/home/wauser \
-	  ibm-workload-automation-agent-zcentric:9.5.0.04.<release_date>
+  docker run \
+        -d -e AGT_NAME=agent_name \
+        -e LICENSE=ACCEPT \
+	    -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
+        -v workload-automation-agent-zcentric-data:/home/wauser \
+        ibm-workload-automation-agent-zcentric:9.5.0.05.<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
-> **Note:** To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
 
-      - TWSClientKeyStore.kdb
-      - TWSClientKeyStore.sth
-      - TWSClientKeyStoreJKS.jks
-      - TWSClientKeyStoreJKS.sth 
+> **Note:** After launching the docker load command, you can see the name of the loaded image that should be defined either in the *docker run* command or in the *docker-compose.yml* file to start the container. For further information, see the Configuration Variables section.
 
-> **Note:** After launching the docker load command, you can see the name of the loaded image that should be defined either in the *docker run* command or in the *docker-compose.yml* file to start the container. For further information, see the next section.
-	 
+### Installing with custom .PEM certificates
+To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
+
+      - ca.crt
+      - tls.key
+      - tls.crt
+
 ## Configuration Variables
 
 The following table lists the configurable variables for the z-centric Agent:
@@ -134,6 +137,7 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | MAXWAITONEXIT   | The number of seconds the Agent waits for the completion of all processes before stopping the container. The default value is 60 sec, the maximum value is 3600 sec                                                                                                           | no          | 60 sec      |
 | TZ              | If used, it sets the TZ operating system environment variable                                                                                                                                                                                                                 | no          | Europe/Rome |
 | ZCONN_URL       | Specified in the format zconn_hostname:zconn_port where zconn_hostname is the fully qualified host name of the Z connector (this is coincident with the Dynamic Workload Console host name) and zconn_port is the HTTP or HTTPS port number of the Z connector (valid range is from 1 to 65535). This parameter adds the capability to download the plug-ins from the Z connector. The default value is https://zconn_hostname:zconn_port/twsz/v1/plugin         | no          | https://zconn_hostname:zconn_port/twsz/v1/plugin |
+| SSL_PASSWORD              | The password to open the private key (tls.key)                                                                                                                                                                                                          | Only if you use custom certificates in PEM format         |                      |
 
 
 
@@ -151,11 +155,12 @@ Support for versions earlier than 19.xx.xx, is provided on a best-effort basis.
 See the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon.  
 
 
-  
+
 ## Limitations
 The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as Jnextplan, otherwise it might create some issues.
 
 On amd64 and Linux on Z platforms.
+
 
 
 
@@ -164,4 +169,4 @@ For additional information about how to use the IBM Workload Automation Agent, s
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C3UKVB). Note that this license does not permit further distribution.
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C7LFRM). Note that this license does not permit further distribution.
