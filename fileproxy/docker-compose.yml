@@ -1,0 +1,32 @@
+####################################################################
+# Licensed Materials - Property of HCL*
+# (c) Copyright HCL Technologies Ltd. 2021. All rights reserved.
+#
+# * Trademark of HCL Technologies Limited
+####################################################################
+version: '3.5'
+services:
+  wa-fileproxy:
+    environment:
+     - SSL_PASSWORD=
+     - SSL_PORT=44444
+     - LICENSE=notaccepted
+    image:  cp.icr.io/cp/ibm-workload-automation-fileproxy:10.1.0.00.20220304
+    container_name: "wa-fileproxy"
+    ports:
+      - "44444:44444"
+    hostname: "wa-fileproxy"
+    volumes:
+     - ./certs:/opt/wautils/certs
+    networks:
+     - wa-net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+volumes:
+  wa-fileproxy-data:
+networks:
+  wa-net:
+    name: wa-net
