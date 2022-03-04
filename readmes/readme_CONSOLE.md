@@ -2,11 +2,10 @@
 
 
 
-
 # Workload Automation Console
 
 ## Introduction
-Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads.
+Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. 
 
 From a single point of control, it supports multiple platforms and provides advanced integration with enterprise applications including ERP, Business Analytics, File Transfer, Big Data, and Cloud applications. See [Installing Automation Hub integrations](installing-automation-hub-integrations) for more information about integrating third-party plug-ins and integrations.
 
@@ -15,12 +14,12 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
+- 10.1.0.00.20220304
 - 9.5.0.05.20211217
-- 9.5.0.04.20210804
-
+ 
  ## Supported platforms
  The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
-
+ 
 
 ## Accessing the container images
 
@@ -33,13 +32,13 @@ You can access the Console container image from the Entitled Registry:
 2.  In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
 
 3.  Run the following command to login into the IBM Entitled Registry:
-
+      
         docker login -u cp -p <your_entitled_key> cp.icr.io
 	
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.05.20211217
+* cp.icr.io/cp/ibm-workload-automation-console:10.1.0.00.20220304
 
 
 ### From IBM Fix Central
@@ -47,20 +46,19 @@ You can access the Console container image from the Entitled Registry:
 If you are accessing the images from IBM Fix Central, use the following command to upload the image to your local Docker environment:
 
      docker load -i <tar_name>
-
+	 
   where <tar_name> is the name of the .tar file containing the image.
 
 
 
 
-
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/distr/src_pi/awspizLinuxDeployments.html)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.1.0/compose-deploying-docker-linux-z)
 
 
 
 
 ## Getting Started
-You can deploy the IBM Workload Automation containers using either Docker compose or Docker run. For both of these methods, ensure you download and install [Docker](https://www.docker.com).
+You can deploy the IBM Workload Automation containers using either Docker compose or Docker run. For both of these methods, ensure you download and install [Docker](https://www.docker.com). 
 
 ### Getting started with Docker compose
 
@@ -88,7 +86,7 @@ In the directory where  the **docker-compose.yml** file has been located, you ca
 
 Once the command has been launched, be sure that the containers are started using the following command:
 
-    docker ps
+    docker ps 
 
 You can optionally check the container logs using the following commands:
 
@@ -105,12 +103,12 @@ The IBM Workload Automation container has the following prerequisites:
 
    For example, use the following command to create a DB2 instance and schema:   
 
-       docker run --rm ibm-workload-automation-console:9.5.0.05 cat /opt/dwc/tools/create_database.sql > create_database.sql
-
+       docker run --rm ibm-workload-automation-console:10.1.0.00 cat /opt/dwc/tools/create_database.sql > create_database.sql
+       
    Copy the "create_database.sql" file on the workstation where the DB2 has been installed, perform a login as administrator and run the following command:
-
-       db2 -tvf create_database.sql
-
+ 
+       db2 -tvf create_database.sql 
+       
 To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
 	 docker run \
@@ -125,11 +123,13 @@ To start the container from the command-line, launch the following command by ad
 		-e DB_ADMIN_USER=db_admin_user \
 		-e DB_ADMIN_PASSWORD=db_admin_password \
 		-v workload-automation-console-data:/home/wauser \
-		ibm-workload-automation-console:9.5.0.05.\<release_date>
+		ibm-workload-automation-console:10.1.0.00.\<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
-> **Note:** Internal ports are predefined and must not be changed. External ports can be customized.
+
+
+> **Note**: Internal ports are predefined and must not be changed. External ports can be customized.
 
 ### Installing with custom .PEM certificates
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
@@ -138,7 +138,7 @@ To use custom certificates, modify the volume `<path_on_host_containing_certs>:/
       - tls.key
       - tls.crt
 
-
+ 
 
 
 
@@ -174,9 +174,9 @@ The following variables are valid only if you set a database different from Derb
 | DB_TYPE                       | The preferred remote database server type (i.e. DERBY, DB2, DB2Z, ORACLE, MSSQL or IDS). The default value is DB2                                                                                                 | yes         | DB2                 |
 | DB_HOSTNAME                   | The Hostname or the IP Address of the database server                                                                                                                                                              | yes         | <dbhostname>        |
 | DB_PORT                       | The port of the database server. The defualt value is 50000                                                                                                                                                        | yes         | 50000               |
-| DB_NAME                       | Depending on the database type the name is different; enter the name of the Console's database for DB2/Informix/OneDB/MSSQL, enter the Oracle Service Name for Oracle. The default value is DWC                          | yes         | DWC                 |
-| DB_SERVER                     | The name of the Informix or OneDB database server | yes only for IDS or ONEDB         | IDS               |
-| DB_USER                       | The database user who accesses the Console tables on the database server. The default value is db2inst1                                                                                                            | yes         | db2inst1            |
+| DB_NAME                       | Depending on the database type the name is different; enter the name of the Console's database for DB2/Informix/MSSQL/OneDB, enter the Oracle Service Name for Oracle. The default value is DWC                          | yes         | DWC                 |
+| DB_SERVER                     | The name of the Informix or OneDB database server | yes only for IDS or ONEDB         | IDS
+| DB_USER                       | The database user who accesses the Console tables on the database server. The default value is db2inst1                                                                                                            | yes         | db2inst1            | 
 | DB_PASSWORD                   | The password of the database user who accesses the Console tables on the database server                                                                                                                           | yes         | <password>          |
 | DB_ADMIN_USER                 | The database user administrator who accesses the Console tables on the database server. The default value is db2inst1                                                                                              | yes         | db2inst1            |
 | DB_ADMIN_PASSWORD             | The password of the database user administrator who accesses the Console tables on the database server                                                                                                             | yes         | <password>          |
@@ -185,23 +185,23 @@ The following variables are valid only if you set a database different from Derb
 | DB_TS_PATH                    | The path of the DATA table space. The default value is TWS_DATA                                                                                                                                                    | no          | TWS_DATA            |
 | DB_SBSPACE                    | The name of the SB table space. Valid only for IDS. By default, leave it empty                                                                                                                                     | no          |                     |
 | DB_ENABLE_PARTITIONING_OPTION | If true, the Oracle Partitioning feature is enabled. Valid only for Oracle, it is ignored by other databases. The default value is true                                                   | no          | true                |
-| DB_ZLOCATION_NAME             | The name of an already existing location in the z/OS environment that will contain the database.       Valid only for DB2 for z/OS. The default value is LOC1                              | yes         | LOC1                |
+| DB_ZLOCATION_NAME             | The name of an already existing location in the z/OS environment that will contain the database.       Valid only for DB2 for z/OS. The default value is LOC1                              | yes         | LOC1                |	
 | DB_ZBUFFERPOOL_NAME           | The name of an already existing buffer pool created in the location specified b ZLOCATIONNAME. The      default value is BP32K                                                              | no          | BP32K               |
-
+	
 
 
 ## Single Sign-On (SSO) configuration
 
-To enable SSO between console and server, LTPA tokens must be the same. The following procedure explains how to create LTPA tokens to be shared between server and console (this procedure must be run only once and not on both systems).
+To enable SSO between console and server, LTPA tokens must be the same. The following procedure explains how to create LTPA tokens to be shared between server and console (this procedure must be run only once and not on both systems). 
 
 To create new LTPA token, issue the following command:
 
-     docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:9.5.0.05 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
+     docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:10.1.0.00 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
 
   where:
   - **<host_dir>** is an existing folder on the local machine where docker runs
-  - **<keys_password>** is LTPA keys password ( for further details, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
-
+  - **<keys_password>** is LTPA keys password ( for further details, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_10.1.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
+	
 The "ltpa.keys" and "wa_ltpa.xml" files are created in the local folder \<hostdir>.
 
 The "ltpa.keys" file must be placed into the volume that stores customized SSL certificates (on both server and console charts).
@@ -297,7 +297,7 @@ To exclude an integration, follow these steps:
 		volumes:
 		- wa-console-data:/home/wauser/
 		- ./plugins.properties:/opt/wautils/config/plugins.properties
-
+	
 6) In the volumes section at the end of the file, add an additional line with "plugins.properties:" so that the section appears as follows:
 
 		volumes:
@@ -309,13 +309,11 @@ To exclude an integration, follow these steps:
 
 7) Save the changes to the docker-composer.yml file.
 
-Proceed to deploy the product components. After the deployment, you can include jobs related to these integrations when defining your workload.
+Proceed to deploy the product components. After the deployment, you can include jobs related to these integrations when defining your workload.	
 
 ## Metrics Monitoring
 
-Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana.
-
-If you use Grafana, you can take advantage of the preconfigured dashboard that is available on [Automation Hub](https://www.yourautomationhub.io/integrations). Automation Hub gives you access to the downloadable JSON file on the Grafana web site. Use the **Grafana Dashboard: Distributed Environments** for you on-premises deployments including Docker. A separate preconfigured dashboard named, **Grafana Dashboard: Kubernetes Environments**, is available for cluster monitoring, including monitoring pods. In a Docker environment, by default, the user that performs the cloud deployment is already authenticated to access the metrics. However, to grant other users access to the metrics securely using a set of credentials, add additional users to the authentication_config.xml file and then modify the prometheus.xml file that is automatically created in a Docker environment. For more information about this procedure and the list of metrics available, see [Metrics monitoring](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ref/awsrgmonprom.html).
+Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana. If you use Grafana, you can take advantage of the preconfigured dashboard that is available with the deployment of the Dynamic Workload Console and the server  components. For more information about the metrics available, see [Metrics monitoring](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=reference-monitoring-prometheus). In a Docker environment, by default, access to the metrics does not require authentication. However, if you want to specify a different user that can access the metrics securely using credentials, modify the prometheus.xml file that you will find automatically created in a Docker environment, adding the additional users.
 
 
 ## Supported Docker versions
@@ -330,14 +328,13 @@ The IBM Workload Automation container has the following limitations:
 
  - Derby database can be used only in a single node environment for testing purposes.
 
-
-
+  
 
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_10.1.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C7LFG9). Note that this license does not permit further distribution.
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-C87LWG). Note that this license does not permit further distribution.
