@@ -11,6 +11,7 @@ This readme file contains the high-level steps to deploy all of the Workload Aut
 * [Console](readmes/readme_CONSOLE.md)
 * [Dynamic Agent](readmes/readme_DYNAMIC_AGENT.md)
 * [Zcentric Agent](readmes/readme_ZCENTRIC_AGENT.md)
+* [FileProxy](fileproxy/README.md)
 
 To access Workload Automation 9.5 documentation please see the following link: [Workload Automation 9.5](https://github.com/WorkloadAutomation/ibm-workload-automation-docker-compose/tree/9.5)
 ## Accessing the container images
