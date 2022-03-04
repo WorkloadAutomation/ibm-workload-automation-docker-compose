@@ -9,19 +9,18 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 z-centric Agent has the following restriction:
 
- - Single node instance
-
+ - Single node instance 
 
 
 
 
 ## Supported tags
+- 10.1.0.00.20220304
 - 9.5.0.05.20211217
-- 9.5.0.04.20210804
-
+ 
  ## Supported platforms
  The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
-
+ 
 
 
 
@@ -36,13 +35,13 @@ You can access the z-centric Agent container image from the Entitled Registry:
 2.  In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
 
 3.  Run the following command to login into the IBM Entitled Registry:
-
+      
         docker login -u cp -p <your_entitled_key> cp.icr.io
 	
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.05.20211217
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.1.0.00.2022034
 
 
 
@@ -51,20 +50,19 @@ You can access the z-centric Agent container image from the Entitled Registry:
 If you are accessing the images from IBM Fix Central, use the following command to upload the image to your local Docker environment:
 
      docker load -i <tar_name>
-
+	 
   where <tar_name> is the name of the .tar file containing the image.
 
 
-
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/distr/src_pi/awspizLinuxDeployments.html)
-
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.1.0/compose-deploying-docker-linux-z)
 
 
 
 
 
-## Getting Started
-You can deploy the IBM Workload Automation containers using either Docker compose or Docker run. For both of these methods, ensure you download and install [Docker](https://www.docker.com).
+
+## Getting Started 
+You can deploy the IBM Workload Automation containers using either Docker compose or Docker run. For both of these methods, ensure you download and install [Docker](https://www.docker.com). 
 
 ### Getting started with Docker compose
 
@@ -92,7 +90,7 @@ In the directory where  the **docker-compose.yml** file has been located, you ca
 
 Once the command has been launched, be sure that the containers are started using the following command:
 
-    docker ps
+    docker ps 
 
 You can optionally check the container logs using the following command:
 
@@ -108,7 +106,7 @@ To start the container from the command-line, launch the following command by ad
         -e LICENSE=ACCEPT \
 	    -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
         -v workload-automation-agent-zcentric-data:/home/wauser \
-        ibm-workload-automation-agent-zcentric:9.5.0.05.<release_date>
+        ibm-workload-automation-agent-zcentric:10.1.0.00.<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
@@ -117,11 +115,10 @@ To start the container from the command-line, launch the following command by ad
 
 ### Installing with custom .PEM certificates
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
-
+	 
       - ca.crt
       - tls.key
       - tls.crt
-
 ## Configuration Variables
 
 The following table lists the configurable variables for the z-centric Agent:
@@ -146,7 +143,6 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 
 
 
-
 ## Supported Docker versions
 This image is officially supported on Docker version 19.xx.xx, or later.
 
@@ -155,7 +151,7 @@ Support for versions earlier than 19.xx.xx, is provided on a best-effort basis.
 See the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon.  
 
 
-
+  
 ## Limitations
 The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as Jnextplan, otherwise it might create some issues.
 
@@ -163,10 +159,9 @@ On amd64 and Linux on Z platforms.
 
 
 
-
 ## Additional Information
-For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_10.1.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C7LFRM). Note that this license does not permit further distribution.
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-C8MLWF). Note that this license does not permit further distribution.
