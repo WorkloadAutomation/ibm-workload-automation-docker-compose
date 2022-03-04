@@ -12,6 +12,7 @@ This readme file contains the high-level steps to deploy all of the Workload Aut
 * [Dynamic Agent](readmes/readme_DYNAMIC_AGENT.md)
 * [Zcentric Agent](readmes/readme_ZCENTRIC_AGENT.md)
 
+To access Workload Automation 9.5 documentation please see the following link: [Workload Automation 9.5](https://github.com/WorkloadAutomation/ibm-workload-automation-docker-compose/tree/9.5)
 ## Accessing the container images
 
 You can access the IBM Workload Automation container images from the Entitled Registry:
@@ -25,9 +26,9 @@ You can access the IBM Workload Automation container images from the Entitled Re
 
  The images are as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.05.20211217
-* cp.icr.io/cp/ibm-workload-automation-server:9.5.0.05.20211217
-* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.05.20211217
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.1.0.00.20220304
+* cp.icr.io/cp/ibm-workload-automation-server:10.1.0.00.20220304
+* cp.icr.io/cp/ibm-workload-automation-console:10.1.0.00.20220304
 
 
 ## Getting Started
