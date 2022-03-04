@@ -1,6 +1,7 @@
 
 
 # Workload Automation FileProxy
+
 ## Introduction
 Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. From a single point of control, it supports multiple platforms and provides advanced integration with enterprise applications including ERP, Business Analytics, File Transfer, Big Data, and Cloud applications.
 You can use the file proxy to store and manage securely files to be transferred with the File Transfer integration available on [Automation Hub](https://www.yourautomationhub.io/). Installing the file proxy as a separate component on a workstation different from the master domain manager allows you to reduce network traffic and resource usage on the master domain manager.
@@ -12,7 +13,6 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 ## Supported tags
 - 10.1.0.00.20220304
-- 9.5.0.05.20211217
  
  ## Supported platforms
  The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
@@ -31,7 +31,7 @@ You can access the Workload Automation FileProxy container image from the Entitl
 	
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-fileproxy:10.1.0.00.20210218
+* cp.icr.io/cp/ibm-workload-automation-fileproxy:10.1.0.00.20220304
 
 ### From IBM Fix Central
 If you are accessing the images from IBM Fix Central, use the following command to upload the image to your local Docker environment:
@@ -109,8 +109,8 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the @PRODUCT.NAME@, see the [online]() documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation, see the [online]() documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). @PRODUCT.NAME@ is licensed under the IBM International Program License Agreement. This license for @PRODUCT.NAME@ can be found [online](). Note that this license does not permit further distribution.
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](). Note that this license does not permit further distribution.
