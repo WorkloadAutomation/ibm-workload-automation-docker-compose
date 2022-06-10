@@ -15,6 +15,7 @@ z-centric Agent has the following restriction:
 
 
 ## Supported tags
+- 10.1.0.00.20220512
 - 10.1.0.00.20220304
 - 9.5.0.05.20211217
  
@@ -41,7 +42,7 @@ You can access the z-centric Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.1.0.00.2022034
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.1.0.00.20220512
 
 
 
