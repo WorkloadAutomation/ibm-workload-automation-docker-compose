@@ -25,9 +25,9 @@ You can access the IBM Workload Automation container images from the Entitled Re
 
  The images are as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.05.20211217
-* cp.icr.io/cp/ibm-workload-automation-server:9.5.0.05.20211217
-* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.05.20211217
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20220617
+* cp.icr.io/cp/ibm-workload-automation-server:9.5.0.06.20220617
+* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.06.20220617
 
 
 ## Getting Started
