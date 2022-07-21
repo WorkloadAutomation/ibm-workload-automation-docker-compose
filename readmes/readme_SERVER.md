@@ -250,7 +250,7 @@ To run reports in batch mode, perform the following steps:
 2. Open the **common.properties** file in a flat-text editor.
 3. Edit the file inserting the information for your database. Instructions on editing the file are provided in the file itself. 
 
-The Report CLI is now ready for running. To start the Report CLI, run the following command: `./reportcli.sh`
+The Report CLI is now ready for running. To start the Report CLI, browse to `/opt/wa/report` and run the following command: `./reportcli.sh`
 
 Consider the following example:
 
