@@ -125,7 +125,7 @@ To use custom certificates, modify the volume `<path_on_host_containing_certs>:/
  
  ### Enabling communication with the server using JWT 
 
-If you want to install the agents without using certificates and also enable communication with the server through the JWT Token, add a secret with the engine credentials.
+If you want to install the agents without using certificates and also enable communication with the server through the JWT Token, add a secret with the engine credentials. This applies if the agent is connected to a distributed server.
 Ensure the following parameters are set in the secret: 
 
 **WA_USER_ENGINE**
