@@ -122,6 +122,38 @@ To use custom certificates, modify the volume `<path_on_host_containing_certs>:/
       - ca.crt
       - tls.key
       - tls.crt
+ 
+ ### Enabling communication with the server using JWT 
+
+If you want to install the agents without using certificates and also enable communication with the server through the JWT Token, add a secret with the engine credentials.
+Ensure the following parameters are set in the secret: 
+
+**WA_USER_ENGINE**
+
+**WA_USER_ENGINE_PASSWORD**
+
+Where
+
+**WA_USER_ENGINE** is the engine user encoded in base64 encoding
+
+**WA_USER_ENGINE_PASSWORD** is the engine password encoded in base64 encoding
+
+Ensure the name of the secret is  < namespace >-waagent-secret.
+
+See the following example:
+
+		apiVersion: v1 
+		kind: Secret 
+		metadata: 
+		  name: <namespace>-waagent-secret
+		  namespace: <namespace>
+		type: "Opaque"
+		data:  
+  		  WA_USER_ENGINE: <engineUserBase64>
+  		  WA_USER_ENGINE_PASSWORD: <engineUserPasswordBase64>
+
+  
+      
 ## Configuration Variables
 
 The following table lists the configurable variables for the z-centric Agent:
