@@ -263,105 +263,10 @@ For more information, see:
 
 ## Installing Automation Hub integrations  
 
-You can extend Workload Automation with a number of out-of-the-box integrations, or plug-ins. Complete documentation for the integrations is available on [Automation Hub](https://www.yourautomationhub.io/). Use this procedure to integrate only the integrations you need to automate your business workflows.
+You can extend Workload Automation with a number of out-of-the-box integrations, or plug-ins. Complete documentation for the integrations is available on [Automation Hub](https://www.yourautomationhub.io/). For information about the procedure to deploy the integrations, browse to the Info tab for the integration of your choice and 
+scroll down to the Deploying an integration section.
 
 You can also extend Workload Automation with custom plug-ins or integrations that you create. For information about creating a custom plug-in and deploying the plug-in see [Workload Automation Lutist Development Kit](https://www.yourautomationhub.io/toolkit) on Automation Hub.
-
-**Note:** You must perform this procedure before deploying the product components. Any changes made post-installation are applied the next time you perform an upgrade.
-
-By default, your HCL Workload Automation deployment includes a number of integrations that are ready to be used after you deploy the server and console containers. The integrations available are defined in a **.properties** file. Create and customize the **.properties** file that pertains to your environment to exclude any integrations you do not need.
-
-To exclude an integration, follow these steps:
-
-1. Depending on your environment, whether it is a distributed environment or a z/OS environment, create a **.properties** file named **plugins.properties** in the same directory where the docker-compose file resides with the following content:
-
-  		com.hcl.scheduling.agent.kubernetes
-		com.hcl.scheduling.agent.udeploycode
-		com.hcl.wa.plugin.ansible
-		com.hcl.wa.plugin.automationanywherebotrunner
-		com.hcl.wa.plugin.automationanywherebottrader
-		com.hcl.wa.plugin.awscloudformation
-		com.hcl.wa.plugin.awslambda
-		com.hcl.wa.plugin.awssns
-		com.hcl.wa.plugin.awssqs
-		com.hcl.wa.plugin.azureresourcemanager
-		com.hcl.wa.plugin.azuredatabricks
-		com.hcl.wa.plugin.azurestorage
-		com.hcl.wa.plugin.blueprism
-		com.hcl.wa.plugin.compression
-		com.hcl.wa.plugin.encryption
-		com.hcl.wa.plugin.gcpcloudstorage
-		com.hcl.wa.plugin.gcpcloudfunction
-		com.hcl.wa.plugin.gcpdeploymentmanager
-		com.hcl.wa.plugin.obiagent
-		com.hcl.wa.plugin.odiloadplan
-		com.hcl.wa.plugin.oraclehcmdataloader
-		com.hcl.wa.plugin.oracleucm
-		com.hcl.wa.plugin.saphanaxsengine
-		com.hcl.waPlugin.chefbootstrap
-		com.hcl.waPlugin.chefrunlist
-		com.hcl.waPlugin.obirunreport
-		com.hcl.waPlugin.odiscenario
-		com.ibm.scheduling.agent.apachespark
-		com.ibm.scheduling.agent.aws
-		com.ibm.scheduling.agent.azure
-		com.ibm.scheduling.agent.biginsights
-		com.ibm.scheduling.agent.centralizedagentupdate
-		com.ibm.scheduling.agent.cloudant
-		com.ibm.scheduling.agent.cognos
-		com.ibm.scheduling.agent.database
-		com.ibm.scheduling.agent.datastage
-		com.ibm.scheduling.agent.ejb
-		com.ibm.scheduling.agent.filetransfer
-		com.ibm.scheduling.agent.hadoopfs
-		com.ibm.scheduling.agent.hadoopmapreduce
-		com.ibm.scheduling.agent.hcllaunch
-		com.ibm.scheduling.agent.j2ee
-		com.ibm.scheduling.agent.java
-		com.ibm.scheduling.agent.jobdurationpredictor
-		com.ibm.scheduling.agent.jobmanagement
-		com.ibm.scheduling.agent.jobstreamsubmission
-		com.ibm.scheduling.agent.jsr352javabatch
-		com.ibm.scheduling.agent.mqtt
-		com.ibm.scheduling.agent.mssqljob
-		com.ibm.scheduling.agent.oozie
-		com.ibm.scheduling.agent.oracleebusiness
-		com.ibm.scheduling.agent.pichannel
-		com.ibm.scheduling.agent.powercenter
-		com.ibm.scheduling.agent.restful
-		com.ibm.scheduling.agent.remotecommand
-		com.ibm.scheduling.agent.salesforce
-		com.ibm.scheduling.agent.sapbusinessobjects
-		com.ibm.scheduling.agent.saphanalifecycle
-		com.ibm.scheduling.agent.softlayer
-		com.ibm.scheduling.agent.sterling
-		com.ibm.scheduling.agent.variabletable
-		com.ibm.scheduling.agent.webspheremq
-		com.ibm.scheduling.agent.ws
-
-2) Delete the lines related to the integrations you do not want to make available in your environment. The remaining integrations will be integrated into Workload Automation at deployment time. Save your changes to the file.
-
-   You can always refer back to this readme file and add an integration back into the file in the future. The integration becomes available the next time you update the console and server containers.
-
-3) In the docker-compose.yml file, add the following entry under the volume section of the wa-server component so that it appears as follows:
-
-		volumes:
-
-		- wa-server-data:/home/wauser/
-		- ./plugins.properties:/opt/wautils/config/plugins.properties
-	
-4) In the volumes section at the end of the file, add an additional line with "plugins.properties:" so that the section appears as follows:
-
-		volumes:
-		wa-db2inst1_home:
-		wa-server-data:
-		wa-console-data:
-		wa-agent-data:
-		plugins.properties:
-
-5) Save the changes to the docker-composer.yml file.
-
-Proceed to deploy the product components. After the deployment, you can include jobs related to these integrations when defining your workload.	
 
 ## Metrics Monitoring
 
