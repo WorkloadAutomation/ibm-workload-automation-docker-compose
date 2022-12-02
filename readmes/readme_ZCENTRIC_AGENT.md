@@ -122,6 +122,11 @@ To use custom certificates, modify the volume `<path_on_host_containing_certs>:/
       - ca.crt
       - tls.key
       - tls.crt
+ 
+
+
+  
+      
 ## Configuration Variables
 
 The following table lists the configurable variables for the z-centric Agent:
