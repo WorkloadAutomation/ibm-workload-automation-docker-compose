@@ -125,34 +125,15 @@ To use custom certificates, modify the volume `<path_on_host_containing_certs>:/
       
 ### Enabling communication with the server using JWT 
 
-If you want to install the agents without using certificates and also enable communication with the server through the JWT Token, add a secret with the engine credentials.
-Ensure the following parameters are set in the secret: 
+If you want to install the agents without using certificates and also enable communication with the server through the JWT Token, use the following configuration variables:
 
 **WA_USER_ENGINE**
 
 **WA_USER_ENGINE_PASSWORD**
 
-Where
+As an alternative to specifying user name and password, you can use the **WA_API_KEY** configuration variable and specify a valid API key. Ensure the API key has not expired.
 
-**WA_USER_ENGINE** is the engine user encoded in base64 encoding
-
-**WA_USER_ENGINE_PASSWORD** is the engine password encoded in base64 encoding
-
-Ensure the name of the secret is  < namespace >-waagent-secret.
-
-See the following example:
-
-		apiVersion: v1 
-		kind: Secret 
-		metadata: 
-		  name: <namespace>-waagent-secret
-		  namespace: <namespace>
-		type: "Opaque"
-		data:  
-  		  WA_USER_ENGINE: <engineUserBase64>
-  		  WA_USER_ENGINE_PASSWORD: <engineUserPasswordBase64>
-
-  
+The variables are described in the **Configuration Variables** section.
 
 ## Configuration Variables
 
@@ -174,7 +155,7 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | WA_USER_ENGINE                 | The user for which you have installed the master domain manager to which the agent is connecting                                                                                                                                                                                                                 | no          | wa_user       |
 | WA_USER_ENGINE_PASSWORD                 | The password for the user for which you have installed the master domain manager to which the agent is connecting                                                                                                                                                                                                                 | no          | wa_user_password       |
 | SSL_PASSWORD              | The password to open the private key (tls.key)                                                                                                                                                                                                          | Only if you use custom certificates in PEM format         |                      |
-
+| WA_API_KEY              | A valid API key                                                                                                                                                                                                          | no         |                      |
 
 
 ## Deploying and starting the IBM Workload Automation Agent dynamic agent container on Red Hat OpenShift
