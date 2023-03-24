@@ -1,6 +1,8 @@
+
 # IBM Workload Automation
 
 ## Introduction
+
 Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. From a single point of control, it supports multiple platforms and provides advanced integration with enterprise applications including ERP, Business Analytics, File Transfer, Big Data, and Cloud applications.
 
 Docker adoption ensures standardization of your workload scheduling environment and provides an easy method to replicate environments quickly in development, build, test, and production environments, speeding up the time it takes to get from build to production significantly. Install your environment using Docker to improve scalability, portability, and efficiency.
@@ -17,18 +19,16 @@ This readme file contains the high-level steps to deploy all of the Workload Aut
 You can access the IBM Workload Automation container images from the Entitled Registry:
 
 1. Access the entitled registry. Log in to [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) with the IBMid and password that are associated with the entitled software.
+2. In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
+3. Execute the following command to log in into the IBM Entitled Registry:
 
-2.  In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
-3.  Execute the following command to log in into the IBM Entitled Registry:
-      
         docker login -u cp -p <your_entitled_key> cp.icr.io
 
- The images are as follows:
+The images are as follows:
 
 * cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20221216
 * cp.icr.io/cp/ibm-workload-automation-server:9.5.0.06.20221216
 * cp.icr.io/cp/ibm-workload-automation-console:9.5.0.06.20221216
-
 
 ## Getting Started
 
@@ -73,22 +73,24 @@ If your server component uses a timezone different from the default timezone, th
     SUCCOUTPUTCOND CONDSUCC "(RC=0) OR (RC=4)"
     RECOVERY STOP
 
-
-      
 ## Supported Docker versions
+
 This image is officially supported on Docker version 19.x or later.
 
 Support for versions earlier than 19.x is provided on a best-effort basis.
 
-Please see the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon. 
+Please see the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon.
 
 ## Limitations
+
 The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or execute other commands such as Jnextplan, otherwise it might create some issues.
 
 Limited to amd64 and Linux on Z platforms.
 
 ## Additional Information
+
 For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 ## License
+
 The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BNFE4V). Note that this license does not permit further distribution.
