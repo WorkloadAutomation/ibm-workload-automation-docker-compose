@@ -40,7 +40,7 @@ services:
       - SERVERPORT=31116 # The port on which the server is contacted by internal dynamic agents (DO NOT TOUCH)     
       - CREATE_PLAN=true # If true it executes an automatic JnextPlan at container deploy time
       - AGT_NAME=WA_SAGT # The name of the agent included in the server
-    image: cp.icr.io/cp/ibm-workload-automation-server:9.5.0.06.20221216
+    image: cp.icr.io/cp/ibm-workload-automation-server:9.5.0.06.20230324
     depends_on:
       - wa-db2
     ports: # Port mapping "external:internal". Internal ports are predefined
@@ -67,7 +67,7 @@ services:
       - DB_HOSTNAME=wa-db2 # (DO NOT TOUCH)
       - ENGINE_HOSTNAME=wa-server # The host name or IP address of the engine (DO NOT TOUCH)
       - DB_NAME=DWC # For DB2/IDS/MSSQL is the name of console database. For ORACLE is the Oracle Service Name. Valid only for DB2/IDS/MSSQL/ORACLE
-    image: cp.icr.io/cp/ibm-workload-automation-console:9.5.0.06.20221216
+    image: cp.icr.io/cp/ibm-workload-automation-console:9.5.0.06.20230324
     depends_on:
       - wa-db2
     ports: # Port mapping "external:internal". Internal ports are predefined
@@ -90,7 +90,7 @@ services:
     environment:
       - SERVERHOSTNAME=wa-server # The host name of the server (DO NOT TOUCH)
       - SERVERPORT=31116 # The port of the server (DO NOT TOUCH)    
-    image: cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20221216
+    image: cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20230324
     depends_on:
       - wa-server
     container_name: "wa-agent"
