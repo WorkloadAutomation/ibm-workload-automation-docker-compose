@@ -11,6 +11,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 ## Supported tags
 
+- 9.5.0.06.20230324
 - 9.5.0.06.20221216
 - 9.5.0.06.20220617
 - 9.5.0.05.20211217
@@ -34,7 +35,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 
 The image is as follows:
 
-- cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20221216
+- cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20230324
 
 ### From IBM Fix Central
 
