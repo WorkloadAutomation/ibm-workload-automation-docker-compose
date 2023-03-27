@@ -30,7 +30,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 2. In the **Container software library** tile, click **View library** and then click **Copy key** to copy the entitlement key to the clipboard.
 3. Run the following command to login into the IBM Entitled Registry:
 
-        docker login -u cp -p <your_entitled_key> cp.icr.io
+       docker login -u cp -p <your_entitled_key> cp.icr.io
 
 The image is as follows:
 
@@ -135,7 +135,7 @@ Ensure you have installed Red Hat OpenShift v3.10 or later.
 
 - Import the template objects contained in the **openshift-template.yml** file in the OpenShift console; if you are using the OpenShift command line, create them by issuing the following command:
 
-        oc create -f <file_name>
+      oc create -f <file_name>
 
     where *<file_name>* is **openshift-template.yml**.
 
@@ -158,7 +158,7 @@ Ensure you have installed Red Hat OpenShift v3.10 or later.
 
 - Deploy the objects defined in the **openshift-template.yml**; if you are using the OpenShift command line, deploy them by launching the oc process command. For example:
 
-        oc process <template_name> -p LICENSE=ACCEPT -p INSTANCE_NAME=<instance_name> -p SERVERHOSTNAME=<serverhostname> -p IMAGE=<image_name> | oc create -f -
+      oc process <template_name> -p LICENSE=ACCEPT -p INSTANCE_NAME=<instance_name> -p SERVERHOSTNAME=<serverhostname> -p IMAGE=<image_name> | oc create -f -
 
     where *<template_name>* is the template name defined in the **openshift-template.yml** file
 

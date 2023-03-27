@@ -99,10 +99,9 @@ To start the container from the command-line, launch the following command by ad
 
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
 
-    - ca.crt
-    - tls.key
-    - tls.crt
-
+    ca.crt
+    tls.key
+    tls.cr
 ## Configuration Variables
 
 The following table lists the configurable variables for the z-centric Agent:
