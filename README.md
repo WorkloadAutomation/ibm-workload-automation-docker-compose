@@ -32,6 +32,7 @@ You can access the IBM Workload Automation container images from the Entitled Re
 * cp.icr.io/cp/ibm-workload-automation-console:10.1.0.03.20230511-amd64
 
 ## Other supported tags
+* 10.2.0.00.20230728
 * 10.1.0.03.20230511-amd64
 * 10.1.0.02.20230301
 * 10.1.0.01.20221130
