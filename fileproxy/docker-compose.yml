@@ -11,7 +11,7 @@ services:
      - SSL_PASSWORD=
      - SSL_PORT=44444
      - LICENSE=notaccepted
-    image:  cp.icr.io/cp/ibm-workload-automation-fileproxy:10.1.0.03.20230511-amd64
+    image:  cp.icr.io/cp/ibm-workload-automation-fileproxy:10.2.0.00.20230728
     container_name: "wa-fileproxy"
     ports:
       - "44444:44444"
