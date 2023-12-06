@@ -15,6 +15,7 @@ z-centric Agent has the following restriction:
 
 
 ## Supported tags
+- 10.2.0.01.20231201
 - 10.2.0.00.20230728
 - 10.1.0.04.20231201
 - 10.1.0.03.20230511-amd64
@@ -48,7 +49,7 @@ You can access the z-centric Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.1.0.00.20220722
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.0.01.20231201
 
 
 
@@ -61,7 +62,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
   where <tar_name> is the name of the .tar file containing the image.
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.1.0/compose-deploying-docker-linux-z)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.2.1/compose-deploying-docker-linux-z)
 
 
 
@@ -113,7 +114,7 @@ To start the container from the command-line, launch the following command by ad
         -e LICENSE=ACCEPT \
 	    -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
         -v workload-automation-agent-zcentric-data:/home/wauser \
-        ibm-workload-automation-agent-zcentric:10.1.0.00.<release_date>
+        ibm-workload-automation-agent-zcentric:<version_number>.<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
@@ -172,7 +173,7 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_10.1.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.1) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
