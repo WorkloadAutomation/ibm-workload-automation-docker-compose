@@ -14,6 +14,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
+- 10.2.0.01.20231201
 - 10.2.0.00.20230728
 - 10.1.0.04.20231201
 - 10.1.0.03.20230511-amd64
@@ -45,7 +46,7 @@ You can access the Console container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-console:10.1.0.00.20220722
+* cp.icr.io/cp/ibm-workload-automation-console:10.2.0.01.20231201
 
 
 ### From IBM Fix Central
@@ -59,7 +60,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
 
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.1.0/compose-deploying-docker-linux-z)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.2.1/compose-deploying-docker-linux-z)
 
 
 
@@ -110,7 +111,7 @@ The IBM Workload Automation container has the following prerequisites:
 
    For example, use the following command to create a DB2 instance and schema:   
 
-       docker run --rm ibm-workload-automation-console:10.1.0.00 cat /opt/dwc/tools/create_database.sql > create_database.sql
+       docker run --rm ibm-workload-automation-console:<version_number> cat /opt/dwc/tools/create_database.sql > create_database.sql
        
    Copy the "create_database.sql" file on the workstation where the DB2 has been installed, perform a login as administrator and run the following command:
  
@@ -130,7 +131,7 @@ To start the container from the command-line, launch the following command by ad
 		-e DB_ADMIN_USER=db_admin_user \
 		-e DB_ADMIN_PASSWORD=db_admin_password \
 		-v workload-automation-console-data:/home/wauser \
-		ibm-workload-automation-console:10.1.0.00.\<release_date>
+		ibm-workload-automation-console:<version_number>.\<release_date>
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
@@ -203,11 +204,11 @@ To enable SSO between console and server, LTPA tokens must be the same. The foll
 
 To create new LTPA token, issue the following command:
 
-     docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:10.1.0.00 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
+     docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:<version_number> /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
 
   where:
   - **<host_dir>** is an existing folder on the local machine where docker runs
-  - **<keys_password>** is LTPA keys password ( for further details, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_10.1.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
+  - **<keys_password>** is LTPA keys password ( for further details, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.1?topic=console-configuring-access-dynamic-workload) documentation).
 	
 The "ltpa.keys" and "wa_ltpa.xml" files are created in the local folder \<hostdir>.
 
@@ -320,7 +321,7 @@ Proceed to deploy the product components. After the deployment, you can include 
 
 ## Metrics Monitoring
 
-Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana. If you use Grafana, you can take advantage of the preconfigured dashboard that is available with the deployment of the Dynamic Workload Console and the server  components. For more information about the metrics available, see [Metrics monitoring](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=reference-monitoring-prometheus). In a Docker environment, by default, access to the metrics does not require authentication. However, if you want to specify a different user that can access the metrics securely using credentials, modify the prometheus.xml file that you will find automatically created in a Docker environment, adding the additional users.
+Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana. If you use Grafana, you can take advantage of the preconfigured dashboard that is available with the deployment of the Dynamic Workload Console and the server  components. For more information about the metrics available, see [Metrics monitoring](https://www.ibm.com/docs/workload-scheduler/10.2.1?topic=reference-monitoring-prometheus). In a Docker environment, by default, access to the metrics does not require authentication. However, if you want to specify a different user that can access the metrics securely using credentials, modify the prometheus.xml file that you will find automatically created in a Docker environment, adding the additional users.
 
 
 ## Supported Docker versions
@@ -340,7 +341,8 @@ The IBM Workload Automation container has the following limitations:
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_10.1.0/com.ibm.tivoli.itws.doc_9.5/distr/src_pi/awspipartdepcont.htm) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation, see the [online](
+https://www.ibm.com/docs/en/workload-automation/10.2.1) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
