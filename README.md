@@ -122,7 +122,7 @@ Perform the following changes in the  **docker-compose.yaml** file for each comp
 
 ### Upgrade scenario
 
-When upgrading, perform the steps documented above either in scenario 1 or in scenario 2, then set the **SSL_KEY_FOLDER** variable in the environment section of all the components. The value of this variable is the path to the existing folder on each component containing the default certificates coming from the previous release:
+When upgrading, perform the steps documented above, then set the **SSL_KEY_FOLDER** variable in the environment section of all the components. The value of this variable is the path to the existing folder on each component containing the default certificates coming from the previous release:
 
 
     SSL_KEY_FOLDER=<path_to_folder_containing_your_default_certificates>
