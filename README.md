@@ -26,9 +26,9 @@ You can access the IBM Workload Automation container images from the Entitled Re
 
 The images are as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20230324
-* cp.icr.io/cp/ibm-workload-automation-server:9.5.0.06.20230324
-* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.06.20230324
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.07.20240327
+* cp.icr.io/cp/ibm-workload-automation-server:9.5.0.07.20240327
+* cp.icr.io/cp/ibm-workload-automation-console:9.5.0.07.20240327
 
 ## Getting Started
 
@@ -83,7 +83,7 @@ Please see the [Docker installation documentation](https://docs.docker.com/engin
 
 ## Limitations
 
-The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or execute other commands such as Jnextplan, otherwise it might create some issues.
+The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or execute other commands such as JnextPlan, otherwise it might create some issues.
 
 Limited to amd64 and Linux on Z platforms.
 

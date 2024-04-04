@@ -11,6 +11,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 ## Supported tags
 
+- 9.5.0.07.20240327
 - 9.5.0.06.20230324
 - 9.5.0.06.20221216
 - 9.5.0.06.20220617
@@ -35,7 +36,7 @@ You can access the Console container image from the Entitled Registry:
 
 The image is as follows:
 
-- cp.icr.io/cp/ibm-workload-automation-console:9.5.0.06.20230324
+- cp.icr.io/cp/ibm-workload-automation-console:9.5.0.07.20240327
 
 ### From IBM Fix Central
 
@@ -45,7 +46,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
 
 where **<tar_name>** is the name of the *.tar* file containing the image.
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/distr/src_pi/awspizLinuxDeployments.html)
+Before you deploy IBM Workload Automation components on Linux on Z, see [Deploying Docker compose on Linux on Z](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/distr/src_pi/awspizLinuxDeployments.html)
 
 ## Getting Started
 
@@ -89,7 +90,7 @@ The IBM Workload Automation container has the following prerequisites:
 
    For example, use the following command to create a DB2 instance and schema:
 
-      docker run --rm ibm-workload-automation-console:9.5.0.06 cat /opt/dwc/tools/create_database.sql > create_database.sql
+      docker run --rm ibm-workload-automation-console:9.5.0.07.20240327 cat /opt/dwc/tools/create_database.sql > create_database.sql
 
    Copy the "create_database.sql" file on the workstation where the DB2 has been installed, perform a login as administrator and run the following command:
 
@@ -98,18 +99,19 @@ The IBM Workload Automation container has the following prerequisites:
 - To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
       docker run \
-          -d -e LICENSE=ACCEPT \
-          -e WA_PASSWORD=wa_password \
-          -e DB_TYPE=db_type \
-          -e DB_HOSTNAME=db_hostname \
-          -e DB_PORT=db_port \
-          -e DB_NAME=db_name \
-          -e DB_USER=db_user \
-          -e DB_PASSWORD=db_password \
-          -e DB_ADMIN_USER=db_admin_user \
-          -e DB_ADMIN_PASSWORD=db_admin_password \
-          -v workload-automation-console-data:/home/wauser \
-          ibm-workload-automation-console:9.5.0.06.\<release_date>        
+        -d -e LICENSE=ACCEPT \
+        -e WA_PASSWORD=wa_password \
+        -e DB_TYPE=db_type \
+        -e DB_HOSTNAME=db_hostname \
+        -e DB_PORT=db_port \
+        -e DB_NAME=db_name \
+        -e DB_USER=db_user \
+        -e DB_PASSWORD=db_password \
+        -e DB_ADMIN_USER=db_admin_user \
+        -e DB_ADMIN_PASSWORD=db_admin_password \
+        -v workload-automation-console-data:/home/wauser \
+        ibm-workload-automation-console:9.5.0.07.20240327
+
   > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
   > \
   > Internal ports are predefined and must not be changed. External ports can be customized.
@@ -118,9 +120,9 @@ The IBM Workload Automation container has the following prerequisites:
 
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
 
-    ca.crt
-    tls.key
-    tls.crt
+- ca.crt
+- tls.key
+- tls.crt
 
 ## Configuration Variables
 
@@ -168,9 +170,9 @@ To enable SSO between console and server, LTPA tokens must be the same. The foll
 
 To create new LTPA token, issue the following command:
 
-    docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:9.5.0.05 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
+    docker run -i --rm -v <host_dir>:/output ibm-workload-automation-console:9.5.0.07.20240327 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
 
-where **<host_dir>** is an existing folder on the local machine where docker runs and **<keys_password>** is LTPA keys password ( for further details, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
+where **<host_dir>** is an existing folder on the local machine where docker runs and **<keys_password>** is LTPA keys password (for further details, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
 
 The "ltpa.keys" and "wa_ltpa.xml" files are created in the local folder \<hostdir>.
 
@@ -288,7 +290,7 @@ To exclude an integration, follow these steps:
 
 Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana.
 
-If you use Grafana, you can take advantage of the preconfigured dashboard that is available on [Automation Hub](https://www.yourautomationhub.io/integrations). Automation Hub gives you access to the downloadable JSON file on the Grafana web site. Use the **Grafana Dashboard: Distributed Environments** for you on-premises deployments including Docker. A separate preconfigured dashboard named, **Grafana Dashboard: Kubernetes Environments**, is available for cluster monitoring, including monitoring pods. In a Docker environment, by default, the user that performs the cloud deployment is already authenticated to access the metrics. However, to grant other users access to the metrics securely using a set of credentials, add additional users to the authentication_config.xml file and then modify the prometheus.xml file that is automatically created in a Docker environment. For more information about this procedure and the list of metrics available, see [Metrics monitoring](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ref/awsrgmonprom.html).
+If you use Grafana, you can take advantage of the pre-configured dashboard that is available on [Automation Hub](https://www.yourautomationhub.io/integrations). Automation Hub gives you access to the downloadable JSON file on the Grafana web site. Use the **Grafana Dashboard: Distributed Environments** for you on-premises deployments including Docker. A separate pre-configured dashboard named, **Grafana Dashboard: Kubernetes Environments**, is available for cluster monitoring, including monitoring pods. In a Docker environment, by default, the user that performs the cloud deployment is already authenticated to access the metrics. However, to grant other users access to the metrics securely using a set of credentials, add additional users to the authentication_config.xml file and then modify the prometheus.xml file that is automatically created in a Docker environment. For more information about this procedure and the list of metrics available, see [Metrics monitoring](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ref/awsrgmonprom.html) documentation.
 
 ## Supported Docker versions
 

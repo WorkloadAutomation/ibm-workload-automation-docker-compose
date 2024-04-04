@@ -11,6 +11,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 ## Supported tags
 
+- 9.5.0.07.20240327
 - 9.5.0.06.20230324
 - 9.5.0.06.20221216
 - 9.5.0.06.20220617
@@ -35,7 +36,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 
 The image is as follows:
 
-- cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20230324
+- cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.07.20240327
 
 ### From IBM Fix Central
 
@@ -84,12 +85,12 @@ You can optionally check the container logs using the following command:
 To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
     docker run \
-        -d -e AGT_NAME=agent_name \
-        -e SERVERHOSTNAME=server_host_name \
-        -e SERVERPORT=server_port \
-        -e LICENSE=ACCEPT \
-        -v workload-automation-agent-dynamic-data:/home/wauser \
-        ibm-workload-automation-agent-dynamic:9.5.0.06.<release_date>
+      -d -e AGT_NAME=agent_name \
+      -e SERVERHOSTNAME=server_host_name \
+      -e SERVERPORT=server_port \
+      -e LICENSE=ACCEPT \
+      -v workload-automation-agent-dynamic-data:/home/wauser \
+      ibm-workload-automation-agent-dynamic:9.5.0.07.20240327
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 > \
@@ -99,9 +100,9 @@ To start the container from the command-line, launch the following command by ad
 
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
 
-    ca.crt
-    tls.key
-    tls.crt
+- ca.crt
+- tls.key
+- tls.crt
 
 ## Configuration Variables
 

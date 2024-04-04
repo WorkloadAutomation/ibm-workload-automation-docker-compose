@@ -13,6 +13,7 @@ z-centric Agent has the following restriction:
 
 ## Supported tags
 
+- 9.5.0.07.20240327
 - 9.5.0.06.20230324
 - 9.5.0.06.20221216
 - 9.5.0.06.20220617
@@ -37,7 +38,7 @@ You can access the z-centric Agent container image from the Entitled Registry:
 
 The image is as follows:
 
-- cp.icr.io/cp/ibm-workload-automation-agent-dynamic:9.5.0.06.20230324
+- cp.icr.io/cp/ibm-workload-automation-agent-zcentric:9.5.0.07.20240327
 
 ### From IBM Fix Central
 
@@ -86,11 +87,11 @@ You can optionally check the container logs using the following command:
 To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
     docker run \
-        -d -e AGT_NAME=agent_name \
-        -e LICENSE=ACCEPT \
-        -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
-        -v workload-automation-agent-zcentric-data:/home/wauser \
-        ibm-workload-automation-agent-zcentric:9.5.0.06.<release_date>
+      -d -e AGT_NAME=agent_name \
+      -e LICENSE=ACCEPT \
+      -e ZCONN_URL=https://zconn_hostname:zconn_port/twsz/v1/plugin \
+      -v workload-automation-agent-zcentric-data:/home/wauser \
+      ibm-workload-automation-agent-zcentric:9.5.0.07.20240327
 
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 > \
@@ -100,9 +101,9 @@ To start the container from the command-line, launch the following command by ad
 
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
 
-    ca.crt
-    tls.key
-    tls.cr
+- ca.crt
+- tls.key
+- tls.cr
 
 ## Configuration Variables
 
@@ -131,7 +132,7 @@ See the [Docker installation documentation](https://docs.docker.com/engine/insta
 
 ## Limitations
 
-The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as Jnextplan, otherwise it might create some issues.
+The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as JnextPlan, otherwise it might create some issues.
 
 On amd64 and Linux on Z platforms.
 
@@ -141,4 +142,4 @@ For additional information about how to use the IBM Workload Automation Agent, s
 
 ## License
 
-The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation Agent is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C7LFRM). Note that this license does not permit further distribution.
+The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation Agent can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-DDDO-C7LFRM). Note that this license does not permit further distribution.

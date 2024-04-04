@@ -11,6 +11,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 ## Supported tags
 
+- 9.5.0.07.20240327
 - 9.5.0.06.20230324
 - 9.5.0.06.20221216
 - 9.5.0.06.20220617
@@ -35,7 +36,7 @@ You can access the Server container image from the Entitled Registry:
 
 The image is as follows:
 
-- cp.icr.io/cp/ibm-workload-automation-server:9.5.0.06.20230324
+- cp.icr.io/cp/ibm-workload-automation-server:9.5.0.07.20240327
 
 ### From IBM Fix Central
 
@@ -89,7 +90,7 @@ The IBM Workload Automation container has the following prerequisites:
 
   For example, use the following command to create a DB2 instance and schema:
 
-      docker run --rm ibm-workload-automation-server:9.5.0.06 cat /opt/wa/TWS/tws_tools/create_database.sql >create_database.sql
+      docker run --rm ibm-workload-automation-server:9.5.0.07.20240327 cat /opt/wa/TWS/tws_tools/create_database.sql >create_database.sql
 
   Copy the "create_database.sql" file on the workstation where the DB2 has been installed, perform a login as administrator and run the following command:
 
@@ -98,20 +99,20 @@ The IBM Workload Automation container has the following prerequisites:
 - To start the container from the command-line, launch the following command by adding the name of the image that has been loaded:
 
       docker run \
-          -d -e PUBLIC_HOSTNAME=server_host_name \
-          -e PUBLIC_PORT=server_port \
-          -e LICENSE=ACCEPT \
-          -e WA_PASSWORD=wa_password \
-          -e DB_TYPE=db_type \
-          -e DB_HOSTNAME=db_hostname \
-          -e DB_PORT=db port \
-          -e DB_NAME=db_name \
-          -e DB_USER=db_user \
-          -e DB_PASSWORD=db_password \
-          -e DB_ADMIN_USER=db_admin_user \
-          -e DB_ADMIN_PASSWORD=db_admin_password \
-          -v workload-automation-server-data:/home/wauser \
-          ibm-workload-automation-server:9.5.0.06.\<release_date>
+        -d -e PUBLIC_HOSTNAME=server_host_name \
+        -e PUBLIC_PORT=server_port \
+        -e LICENSE=ACCEPT \
+        -e WA_PASSWORD=wa_password \
+        -e DB_TYPE=db_type \
+        -e DB_HOSTNAME=db_hostname \
+        -e DB_PORT=db port \
+        -e DB_NAME=db_name \
+        -e DB_USER=db_user \
+        -e DB_PASSWORD=db_password \
+        -e DB_ADMIN_USER=db_admin_user \
+        -e DB_ADMIN_PASSWORD=db_admin_password \
+        -v workload-automation-server-data:/home/wauser \
+        ibm-workload-automation-server:9.5.0.07.20240327
 
   > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
@@ -119,9 +120,9 @@ The IBM Workload Automation container has the following prerequisites:
 
 To use custom certificates, modify the volume `<path_on_host_containing_certs>:/opt/wautils/certs` with the path of the directory that contains your certificates at the place of `<path_on_host_containing_certs>`. In the defined folder, add the following certificates:
 
-    ca.crt
-    tls.key
-    tls.crt
+- ca.crt
+- tls.key
+- tls.crt
 
 ### Additional configuration
 
@@ -132,8 +133,7 @@ The following information applies to both deploying with Docker compose and Dock
 If your server component uses a timezone different from the default timezone, then to avoid problems with the FINAL job stream, you must update MAKEPLAN within the DOCOMMAND, specifying the timezone parameter and value. For example, if you are using the America/Los Angeles timezone, then it must be specified as follows:
 
     WA_WA-SERVER_XA#MAKEPLAN
-    DOCOMMAND "TODAY_DATE=`${UNISONHOME}/bin/datecalc today pic YYYYMMDD`; ${UNISONHOME}/MakePlan -to `${UNISONHOME}/bin/datecalc ${TODAY_DATE}070
-    0 + 1 day + 2 hours pic MM/DD/YYYY^HHTT` timezone America/Los_Angeles"
+    DOCOMMAND "TODAY_DATE=`${UNISONHOME}/bin/datecalc today pic YYYYMMDD`; ${UNISONHOME}/MakePlan -to `${UNISONHOME}/bin/datecalc ${TODAY_DATE}0700 + 1 day + 2 hours pic MM/DD/YYYY^HHTT` timezone America/Los_Angeles"
     STREAMLOGON wauser
     DESCRIPTION "Added by composer."
     TASKTYPE OTHER
@@ -200,9 +200,9 @@ To enable SSO between console and server, LTPA tokens must be the same. The foll
 
 To create new LTPA token, launch the following command:
 
-    docker run -i --rm -v <host_dir>:/output ibm-workload-automation-server:9.5.0.05 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
+    docker run -i --rm -v <host_dir>:/output ibm-workload-automation-server:9.5.0.07.20240327 /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
 
-where: **<host_dir>** is an existing folder on the local machine where docker runs and **<keys_password>** is LTPA keys password ( for further details, see the [online](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
+where: **<host_dir>** is an existing folder on the local machine where docker runs and **<keys_password>** is LTPA keys password (for further details, see this [link](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ad/awsadshareltpa.htm) documentation).
 
 The "ltpa.keys" and "wa_ltpa.xml" files are created in the local folder \<hostdir>.
 
@@ -320,7 +320,7 @@ Proceed to deploy the product components. After the deployment, you can include 
 
 Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana.
 
-If you use Grafana, you can take advantage of the preconfigured dashboard that is available on [Automation Hub](https://www.yourautomationhub.io/integrations). Automation Hub gives you access to the downloadable JSON file on the Grafana web site. Use the **Grafana Dashboard: Distributed Environments** for you on-premises deployments including Docker. A separate preconfigured dashboard named, **Grafana Dashboard: Kubernetes Environments**, is available for cluster monitoring, including monitoring pods. In a Docker environment, by default, the user that performs the cloud deployment is already authenticated to access the metrics. However, to grant other users access to the metrics securely using a set of credentials, add additional users to the `authentication_config.xml` file and then modify the `prometheus.xml` file that is automatically created in a Docker environment. For more information about this procedure and the list of metrics available, see [Metrics monitoring](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ref/awsrgmonprom.html).
+If you use Grafana, you can take advantage of the pre-configured dashboard that is available on [Automation Hub](https://www.yourautomationhub.io/integrations). Automation Hub gives you access to the downloadable JSON file on the Grafana web site. Use the **Grafana Dashboard: Distributed Environments** for you on-premises deployments including Docker. A separate pre-configured dashboard named, **Grafana Dashboard: Kubernetes Environments**, is available for cluster monitoring, including monitoring pods. In a Docker environment, by default, the user that performs the cloud deployment is already authenticated to access the metrics. However, to grant other users access to the metrics securely using a set of credentials, add additional users to the `authentication_config.xml` file and then modify the `prometheus.xml` file that is automatically created in a Docker environment. For more information about this procedure and the list of metrics available, see [Metrics monitoring](https://www.ibm.com/support/knowledgecenter/en/SSGSPN_9.5.0/com.ibm.tivoli.itws.doc_9.5/distr/src_ref/awsrgmonprom.html).
 
 ## Supported Docker versions
 
@@ -332,7 +332,7 @@ See the [Docker installation documentation](https://docs.docker.com/engine/insta
 
 ## Limitations
 
-The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as Jnextplan, otherwise it might create some issues.
+The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as JnextPlan, otherwise it might create some issues.
 
 On amd64 and Linux on Z platforms.
 
