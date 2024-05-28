@@ -195,6 +195,17 @@ The following variables are valid only if you set a database different from Derb
 | DB_ENABLE_PARTITIONING_OPTION | If true, the Oracle Partitioning feature is enabled. Valid only for Oracle, it is ignored by other databases. The default value is true                                                   | no          | true                |
 | DB_ZLOCATION_NAME             | The name of an already existing location in the z/OS environment that will contain the database.       Valid only for DB2 for z/OS. The default value is LOC1                              | yes         | LOC1                |	
 | DB_ZBUFFERPOOL_NAME           | The name of an already existing buffer pool created in the location specified b ZLOCATIONNAME. The      default value is BP32K                                                              | no          | BP32K               |
+
+- Open telemetry variables
+
+| Variable                      | Description                                                                                                                                                                               | Mandatory   | Example             |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------  | ------------------- |
+| otel_traces_exporter          | The trace exporter to be used                                                                                                                                                             | no          | otlp                |
+| otel_exporter_otlp_endpoint   | A base endpoint URL for any signal type, with an optionally-specified port number. Helpful for when you’re sending more than one signal to the same endpoint and want one environment variable to control the endpoint | no | http://localhost:4317 |
+| otel_exporter_otlp_traces_endpoint | Endpoint URL for trace data only, with an optionally-specified port number. Typically ends with v1/traces when using OTLP/HTTP                                                       | no          | http://localhost:4317 |
+| otel_exporter_otlp_protocol   | Specifies the OTLP transport protocol to be used for all telemetry data                                                                                                                   | no          | grpc                |
+| otel_exporter_otlp_traces_protocol | Specifies the OTLP transport protocol to be used for trace data                                                                                                                      | no          | grpc                |   
+| otel_sdk_disabled             | Disables the SDK for all signals                                                                                                                                                          | no          | true                |
 	
 
 
