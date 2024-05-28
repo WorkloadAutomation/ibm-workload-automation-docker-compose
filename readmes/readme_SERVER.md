@@ -225,6 +225,16 @@ The following variables are valid only if you set a database different from Derb
    
 > **Note**: The Dynamic Agent component included in the Workload Automation Server container is deployed and configured with a gateway.
 
+- Open telemetry variables
+
+| Variable                      | Description                                                                                                                                                                               | Mandatory   | Example             |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------  | ------------------- |
+| otel_traces_exporter          | The trace exporter to be used                                                                                                                                                             | no          | otlp                |
+| otel_exporter_otlp_endpoint   | A base endpoint URL for any signal type, with an optionally-specified port number. Helpful for when you’re sending more than one signal to the same endpoint and want one environment variable to control the endpoint | no | http://localhost:4317 |
+| otel_exporter_otlp_traces_endpoint | Endpoint URL for trace data only, with an optionally-specified port number. Typically ends with v1/traces when using OTLP/HTTP                                                       | no          | http://localhost:4317 |
+| otel_exporter_otlp_protocol   | Specifies the OTLP transport protocol to be used for all telemetry data                                                                                                                   | no          | grpc                |
+| otel_exporter_otlp_traces_protocol | Specifies the OTLP transport protocol to be used for trace data                                                                                                                      | no          | grpc                |   
+| otel_sdk_disabled             | Disables the SDK for all signals                                                                                                                                                          | no          | true                |
 
 
 ## Single Sign-On (SSO) configuration
