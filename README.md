@@ -98,18 +98,18 @@ To ensure communication between components, you have to install in each containe
 
 To generate the custom certificates on a Windows or UNIX workstation, run the following command:
 
-    openssl genrsa -out ./ca.key 40xx96
-    openssl req -x5x09 -new -nodes -key ./ca.key -subj "/CN=WA_ROOT_CA" -days 3650 -out ./ca.crt -config <openssl_dir>/openssl.cnf
-    openssl genrsa -des3 -passout pass:<SSL_PASSWORD> -out ./tls.key 40xx96
+    openssl genrsa -out ./ca.key 4096
+    openssl req -x509 -new -nodes -key ./ca.key -subj "/CN=WA_ROOT_CA" -days 3650 -out ./ca.crt -config <openssl_dir>/openssl.cnf
+    openssl genrsa -des3 -passout pass:<SSL_PASSWORD> -out ./tls.key 4096
     openssl req -new -key ./tls.key -passin pass:<SSL_PASSWORD> -out ./tls.csr -config <openssl_dir>/openssl.cnf -subj "/C=<C>/ST=<ST>/L=<L>/O=Global Security/OU=<OU> Department/CN=<COMMON_NAME>" 
     openssl x509 -req -in ./tls.csr -days 3650 -CA ./ca.crt -CAkey ./ca.key -CAcreateserial -out ./tls.crt
 
 After you run the above commands, the following files are created:
 
- - ca
+ - ca.crt
  - ca.key
  - ca.srl
- - tls
+ - tls.crt
  - tls.csr
  - tls.key
 
