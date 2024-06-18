@@ -134,9 +134,9 @@ For example, if the console is on-premises and the server is deployed in a conta
     ${WAUI_DIR}/java/jre/bin/keytool -importcert -keystore ${WAUI_DIR}/usr/servers/dwcServer/resources/security/TWSServerTrustFile.jks -storepass <SSL_PASSWORD> -storetype jks -file <ca_server_file> -alias wa_ca_server -noprompt
 
 ## Supported Docker versions
-This image is officially supported on Docker version 19.x or later.
+This image is officially supported on Docker version 24.x or later.
 
-Support for versions earlier than 19.x is provided on a best-effort basis.
+Support for versions earlier than 24.x is provided on a best-effort basis.
 
 Please see the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon. 
 
