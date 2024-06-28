@@ -1,4 +1,5 @@
-FROM ibmcom/db2:11.5.0.0a
+FROM icr.io/db2_community/db2:11.5.9.0
+
 ARG DB2INST1_PASSWORD
 ARG LICENSE
 
@@ -15,4 +16,3 @@ RUN chmod a+x /var/custom/*
 RUN chmod 644 /db_tools/*
 
 EXPOSE 50000
-
