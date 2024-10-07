@@ -64,7 +64,7 @@ Accept the product licenses by setting the **LICENSE** parameter to **"accept"**
 
 In the directory where  the **docker-compose.yml** file is located, you can start the containers by running the following command:
 
-    docker-compose up -d
+    docker compose up -d
 
 To verify that the containers are started, run the following command:
 
@@ -72,7 +72,7 @@ To verify that the containers are started, run the following command:
 
 You can optionally check the container logs using the following command:
 
-    docker-compose logs -f <container_name>
+    docker compose logs -f <container_name>
 
 Where, <container_name> represents one of the following: wa-server, wa-console or wa-agent.
 
