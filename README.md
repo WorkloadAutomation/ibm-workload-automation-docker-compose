@@ -13,7 +13,7 @@ This readme file contains the high-level steps to deploy all of the Workload Aut
 * [Zcentric Agent](readmes/readme_ZCENTRIC_AGENT.md)
 * [FileProxy](fileproxy/README.md)
 
-To access Workload Automation 9.5 documentation please see the following link: [Workload Automation 9.5](https://github.com/WorkloadAutomation/ibm-workload-automation-docker-compose/tree/9.5)
+
 ## Accessing the container images
 
 You can access the IBM Workload Automation container images from the Entitled Registry:
@@ -32,7 +32,8 @@ You can access the IBM Workload Automation container images from the Entitled Re
 * cp.icr.io/cp/ibm-workload-automation-console:10.2.3.00.20241122
 
 ## Other supported tags
-* 10.2.0.01.20231201
+* 10.2.2.00.20240424
+* 10.2.1.00.20231201
 * 10.2.0.00.20230728
 * 10.1.0.05.20240712
 * 10.1.0.04.20231201
@@ -147,7 +148,7 @@ The owner of all product files is the wauser user, thus the product does not run
 Limited to amd64 and Linux on Z platforms.
 
 ## Additional Information
-For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.0) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.3) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 ## License
 The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BNFE4V). Note that this license does not permit further distribution.
