@@ -15,7 +15,9 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
-- 10.2.0.01.20231201
+- 10.2.3.00.20241122
+- 10.2.2.00.20240424
+- 10.2.1.00.20231201
 - 10.2.0.00.20230728
 - 10.1.0.05.20240712
 - 10.1.0.04.20231201
@@ -49,7 +51,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.0.01.20231201
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:.2.3.00.20241122
 
 
 ### From IBM Fix Central
@@ -63,7 +65,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
 
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.2.1/compose-deploying-docker-linux-z)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/.2.3?topic=compose-deploying-docker-linux-z)
 
 
 
@@ -143,7 +145,7 @@ The variables are described in the **Configuration Variables** section.
 
 ### Enabling installation of dynamic agents on container with a remote gateway
 
-To install a dynamic agent with remote gateway you must have a dynamic agent already installed with a local gateway. The newly added parameters in version 10.2 facilitates you to deploy a new dynamic agent and enables the communication directly with another agent gateway.
+To install a dynamic agent with remote gateway you must have a dynamic agent already installed with a local gateway. The newly added parameters in version .2 facilitates you to deploy a new dynamic agent and enables the communication directly with another agent gateway.
 
 To enable the parameters for Docker:
 
@@ -238,7 +240,7 @@ If you want to use custom Agent certificates, uncomment the "BEGIN SECTION - Cer
 
     
 where TWSClientKeyStoreJKS.jks  TWSClientKeyStoreJKS.sth  TWSClientKeyStore.kdb  TWSClientKeyStore.sth are the container keystore and stash file containing your customized certificates.
-For details about custom certificates, see the [online](https://www.ibm.com/docs/workload-scheduler/10.2.1?topic=cso-customizing-certificates-master-domain-manager-dynamic-agent-communication) documentation.
+For details about custom certificates, see the [online](https://www.ibm.com/docs/workload-scheduler/10.2.3?topic=cso-customizing-certificates-master-domain-manager-dynamic-agent-communication) documentation.
     
     See an example where `release_name` = myname and `namespace` = default: 
     
@@ -278,7 +280,7 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.1) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.3) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
