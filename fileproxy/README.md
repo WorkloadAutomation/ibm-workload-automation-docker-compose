@@ -12,7 +12,10 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
-- 10.2.0.00.20231201
+- 10.2.4.00.20250423
+- 10.2.3.00.20241122
+- 10.2.2.00.20240424
+- 10.2.1.00.20231201
 - 10.2.0.00.20230728
 - 10.1.0.05.20240712
 - 10.1.0.04.20231201
@@ -37,14 +40,14 @@ You can access the Workload Automation FileProxy container image from the Entitl
 	
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-fileproxy:10.1.0.00.20220304
+* cp.icr.io/cp/ibm-workload-automation-fileproxy:10.2.4.00.20250423
 
 ### From IBM Fix Central
 If you are accessing the images from IBM Fix Central, use the following command to upload the image to your local Docker environment:
      docker load -i <tar_name>
   where <tar_name> is the name of the .tar file containing the image.
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/workload-scheduler/10.1.0?topic=SSGSPN_10.1.0/compose-deploying-docker-linux-z)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.4?topic=compose-deploying-docker-linux-z)
 
 
 
