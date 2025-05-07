@@ -52,7 +52,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:.2.3.00.20241122
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.4.00.20250423
 
 
 ### From IBM Fix Central
