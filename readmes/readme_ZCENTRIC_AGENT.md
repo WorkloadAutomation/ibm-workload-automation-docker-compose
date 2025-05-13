@@ -53,7 +53,7 @@ You can access the z-centric Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.3.00.20241122
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.4.00.20250423
 
 
 
@@ -66,7 +66,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
   where <tar_name> is the name of the .tar file containing the image.
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.3?topic=compose-deploying-docker-linux-z)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.4?topic=compose-deploying-docker-linux-z)
 
 
 
@@ -177,7 +177,7 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.3) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.4) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
