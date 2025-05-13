@@ -149,7 +149,7 @@ The owner of all product files is the wauser user, thus the product does not run
 Limited to amd64 and Linux on Z platforms.
 
 ## Additional Information
-For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.3) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.4) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 ## License
 The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BNFE4V). Note that this license does not permit further distribution.
