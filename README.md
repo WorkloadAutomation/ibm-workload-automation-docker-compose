@@ -36,6 +36,7 @@ You can access the IBM Workload Automation container images from the Entitled Re
 * 10.2.2.00.20240424
 * 10.2.1.00.20231201
 * 10.2.0.00.20230728
+* 10.1.0.06.20250609
 * 10.1.0.05.20240712
 * 10.1.0.04.20231201
 * 10.1.0.03.20230511-amd64
