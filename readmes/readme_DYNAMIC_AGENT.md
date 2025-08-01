@@ -15,6 +15,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 
 ## Supported tags
+- 10.2.5.00.20250804
 - 10.2.4.00.20250423
 - 10.2.3.00.20241122
 - 10.2.2.00.20240424
@@ -52,7 +53,7 @@ You can access the Dynamic Agent container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.4.00.20250423
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.5.00.20250804
 
 
 ### From IBM Fix Central
@@ -66,7 +67,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
 
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.4?topic=compose-deploying-docker-linux-z)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.5?topic=compose-deploying-docker-linux-z)
 
 
 
@@ -241,7 +242,7 @@ If you want to use custom Agent certificates, uncomment the "BEGIN SECTION - Cer
 
     
 where TWSClientKeyStoreJKS.jks  TWSClientKeyStoreJKS.sth  TWSClientKeyStore.kdb  TWSClientKeyStore.sth are the container keystore and stash file containing your customized certificates.
-For details about custom certificates, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.4?topic=guide-configuring-secure-communications) documentation.
+For details about custom certificates, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.5?topic=guide-configuring-secure-communications) documentation.
     
     See an example where `release_name` = myname and `namespace` = default: 
     
@@ -281,7 +282,7 @@ On amd64 and Linux on Z platforms.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.4) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation Agent, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.5) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
