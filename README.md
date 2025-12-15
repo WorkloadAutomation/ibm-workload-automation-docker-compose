@@ -27,11 +27,13 @@ You can access the IBM Workload Automation container images from the Entitled Re
 
  The images are as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.4.00.20250423
-* cp.icr.io/cp/ibm-workload-automation-server:10.2.4.00.20250423
-* cp.icr.io/cp/ibm-workload-automation-console:10.2.4.00.20250423
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.6.00.20251212
+* cp.icr.io/cp/ibm-workload-automation-server:10.2.6.00.20251212
+* cp.icr.io/cp/ibm-workload-automation-console:10.2.6.00.20251212
 
 ## Other supported tags
+* 10.2.5.00.20250804
+* 10.2.4.00.20250423
 * 10.2.3.00.20241122
 * 10.2.2.00.20240424
 * 10.2.1.00.20231201
@@ -154,3 +156,4 @@ For additional information about using the IBM Workload Automation, see the [onl
 
 ## License
 The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BNFE4V). Note that this license does not permit further distribution.
+
