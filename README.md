@@ -52,6 +52,17 @@ You can access the IBM Workload Automation container images from the Entitled Re
 * 9.5.0.06.20220617
 * 9.5.0.05.20211217
 
+## Verifying container images with Garasign
+Container image verification is performed using the **Garasign** infrastructure.
+
+-   **Prerequisites:** Installation and configuration of the Garasign local signing client.
+    
+-   **Documentation:** Detailed setup and usage instructions can be found on the [IBM Supply Chain Security internal portal](https://pages.github.ibm.com/Supply-Chain-Security/AppSec-External-Docs/appsec/CodeSigningService/LocalSign/WhatDoYouWantToSign/imagesigning/).
+    
+-   **Registry:** Signatures are located on `icr.io`.
+    
+-   **Public key retrieval:** The IBM public key is located within the **Quick start guide** package available via **FixCentral**.
+
 
 ## Getting Started
 
