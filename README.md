@@ -27,11 +27,12 @@ You can access the IBM Workload Automation container images from the Entitled Re
 
  The images are as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.6.00.20251212
-* cp.icr.io/cp/ibm-workload-automation-server:10.2.6.00.20251212
-* cp.icr.io/cp/ibm-workload-automation-console:10.2.6.00.20251212
+* cp.icr.io/cp/ibm-workload-automation-agent-dynamic:10.2.7.00.20260424
+* cp.icr.io/cp/ibm-workload-automation-server:10.2.7.00.20260424
+* cp.icr.io/cp/ibm-workload-automation-console:10.2.7.00.20260424
 
 ## Other supported tags
+* 10.2.6.00.20251212
 * 10.2.5.00.20250804
 * 10.2.4.00.20250423
 * 10.2.3.00.20241122
@@ -163,7 +164,7 @@ The owner of all product files is the wauser user, thus the product does not run
 Limited to amd64 and Linux on Z platforms.
 
 ## Additional Information
-For additional information about using the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.4) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about using the IBM Workload Automation, see the [online](https://help.blueproddoc.com/workloadautomation/v1027/index.html) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 ## License
 The Dockerfile and associated scripts are licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). IBM Workload Automation is licensed under the IBM International Program License Agreement. This license for IBM Workload Automation can be found [online](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-AGOO-BNFE4V). Note that this license does not permit further distribution.
