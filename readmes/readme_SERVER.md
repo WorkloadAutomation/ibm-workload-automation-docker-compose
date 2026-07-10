@@ -205,14 +205,12 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 
 - DB variables
 
-The following variables are valid only if you set a database different from Derby, such as DB2, Informix (IDS), MSSQL, OneDB, or Oracle.
-
 | Variable                      | Description                                                                                                                                                                               | Mandatory   | Example             |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------  | ------------------- |
-| DB_TYPE                       | The preferred remote database server type (e.g. DB2, ORACLE, MSSQL, IDS). The default value is DB2                                                                                        | yes         | DB2                 |
+| DB_TYPE                       | The preferred remote database server type (e.g. DB2, POSTGRES, ORACLE, MSSQL, IDS). The default value is DB2                                                                                        | yes         | DB2                 |
 | DB_HOSTNAME                   | The Hostname or the IP Address of the database server                                                                                                                                     | yes         | <dbhostname>        |
 | DB_PORT                       | The port of the database server. The default value is 50000                                                                                                                               | yes         | 50000               |
-| DB_NAME                       | Depending on the database type, the name is different; enter the name of the Server's database for DB2/Informix/MSSQL/OneDB, enter the Oracle Service Name for Oracle. The default value is TWS | yes         | TWS                 |
+| DB_NAME                       | Depending on the database type, the name is different; enter the name of the Server's database for DB2/POSTGRES/Informix/MSSQL/OneDB, enter the Oracle Service Name for Oracle. The default value is TWS | yes         | TWS                 |
 | DB_SERVER                     | The name of the Informix or OneDB database server | yes only for IDS or ONEDB         | IDS
 | DB_USER                       | The database user who accesses the Server tables on the database server. The defualt value is db2inst1                                                                                    | yes         | db2inst1            |
 | DB_PASSWORD                   | The password of the database user who accesses the Server tables on the database server                                                                                                   | yes         | <password>          |
