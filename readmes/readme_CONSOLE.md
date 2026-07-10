@@ -207,11 +207,10 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 
 - DB variables
 
-The following variables are valid only if you set a database different from Derby, such as DB2, DB2 for z/OS (DB2Z), Informix (IDS), OneDB, MSSQL or Oracle. Use Derby database only for demo or test purposes.
 
 | Variable                      | Description                                                                                                                                                                                                        | Mandatory   | Example             |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                         | ----------  | ---------------     |
-| DB_TYPE                       | The preferred remote database server type (i.e. DERBY, DB2, DB2Z, ORACLE, MSSQL or IDS). The default value is DB2                                                                                                 | yes         | DB2                 |
+| DB_TYPE                       | The preferred remote database server type (i.e. DB2, DB2Z, POSTGRES, ORACLE, MSSQL or IDS). The default value is DB2                                                                                                 | yes         | DB2                 |
 | DB_HOSTNAME                   | The Hostname or the IP Address of the database server                                                                                                                                                              | yes         | <dbhostname>        |
 | DB_PORT                       | The port of the database server. The defualt value is 50000                                                                                                                                                        | yes         | 50000               |
 | DB_NAME                       | Depending on the database type the name is different; enter the name of the Console's database for DB2/Informix/MSSQL/OneDB, enter the Oracle Service Name for Oracle. The default value is DWC                          | yes         | DWC                 |
@@ -374,12 +373,7 @@ Support for versions earlier than 19.xx.xx, is provided on a best-effort basis.
 
 See the [Docker installation documentation](https://docs.docker.com/engine/installation/) for details on how to upgrade your Docker daemon.  
 
-## Limitations
-The IBM Workload Automation container has the following limitations:
 
- - Derby database can be used only in a single node environment for testing purposes.
-
-  
 
 
 
