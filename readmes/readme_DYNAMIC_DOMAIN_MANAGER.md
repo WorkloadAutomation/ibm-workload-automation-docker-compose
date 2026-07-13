@@ -223,7 +223,7 @@ Consider the following example:
 
 For more information, see: 
 
-[Running batch reports from the command line interface](https://www.ibm.com/docs/en/workload-automation/10.2.5?topic=reports-running-batch-from-command-line-interface)
+[Running batch reports from the command line interface](https://help.blueproddoc.com/workloadautomation/v1028/zos/src_man/eqqr1batchrepfromcommli.html)
 
 ## Supported Docker versions
 This image is officially supported on Docker version 19.xx.xx, or later.
