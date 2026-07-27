@@ -52,7 +52,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
 
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://help.blueproddoc.com/workloadautomation/v1028/distr/src_pi/awspizLinuxDeployments.html)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.8?topic=compose-deploying-docker-linux-z)
 
 
 ## Getting Started
@@ -166,6 +166,11 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | SERVERHOSTNAME          | The hostname on which the server is contacted by internal dynamic agents                                                                                                                                                                                                      | yes         | wa-server            |
 | SERVERPORT              | The port on which the server is contacted by internal dynamic agents                                                                                                                                                                                                          | yes         | 31116                |
 | SSL_PASSWORD              | The password to open the private key (tls.key)                                                                                                                                                                                                          | Only if you use custom certificates in PEM format         |                      |
+|DDM_MASTER              | The name of the CPU of the master domain manager                                                                                                                                                                                                        | yes       | WA_FTA                     |
+|DDM_MDM_HOSTNAME              | The hostname used by the dynamic domain manager to connect to the master domain manager                                                                                                                                                                                                          | yes         | wa-server                     |
+|DDM_MDM_HTTPS_PORT              | The port used by the dynamic domain manager to connect to the master domain manager                                                                                                                                                                                                       | yes        |   31116                   |
+|DDM_DOMAIN              | The domain used by the dynamic domain manager to register the components                                                                                                                                                                                                          | no        | DYNAMICDM                     |
+|DWBNAME              | The broker workstation used to identify the dynamic domain manager                                                                                                                                                                                                      | yes        | WA_DWB_DDM                     |
 
 - DB variables
 
@@ -223,7 +228,7 @@ Consider the following example:
 
 For more information, see: 
 
-[Running batch reports from the command line interface](https://help.blueproddoc.com/workloadautomation/v1028/zos/src_man/eqqr1batchrepfromcommli.html)
+[Running batch reports from the command line interface](https://www.ibm.com/docs/en/workload-automation/10.2.8?topic=reports-running-batch-from-command-line-interface)
 
 ## Supported Docker versions
 This image is officially supported on Docker version 19.xx.xx, or later.
@@ -245,7 +250,7 @@ On amd64 and Linux on Z platforms.
 For information about troubleshooting processes, refer to the Workload Automation Server readme.
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation, see the [online](https://help.blueproddoc.com/workloadautomation/v1028/index.html) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.8) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
