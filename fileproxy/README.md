@@ -81,7 +81,7 @@ To start the container from the command-line, launch the following command by ad
         -d -e SSL_PASSWORD=<your_certificate_password> \
         -e LICENSE=ACCEPT \
         -v <path_on_host_containing_certs>:/opt/wautils/certs \
-        ibm-workload-automation-fileproxy:10.1.0.00.<release_date>
+        ibm-workload-automation-fileproxy:10.2.8.00.<release_date>
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 > **Note:** After launching the docker load command, you can see the name of the loaded image that should be defined either in the *docker run* command or in the *docker-compose.yml* file to start the container. For further information, see the Configuration Variables section.
 ### Installing with .PEM certificates
