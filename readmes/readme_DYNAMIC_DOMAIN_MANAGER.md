@@ -37,7 +37,7 @@ You can access the Dynamic domain manager container image from the Entitled Regi
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-server:10.2.5.00.20250804
+* cp.icr.io/cp/ibm-workload-automation-server:10.2.8.00.20260727
 
 
 ### From IBM Fix Central

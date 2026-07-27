@@ -54,7 +54,7 @@ You can access the Server container image from the Entitled Registry:
 
  The image is as follows:
 
-* cp.icr.io/cp/ibm-workload-automation-server:10.2.5.00.20250804
+* cp.icr.io/cp/ibm-workload-automation-server:10.2.8.00.20260727
 
 
 ### From IBM Fix Central
@@ -69,7 +69,7 @@ If you are accessing the images from IBM Fix Central, use the following command 
 
 
 
-Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://help.blueproddoc.com/workloadautomation/v1028/distr/src_pi/awspizLinuxDeployments.html)
+Before you deploy IBM Workload Automation components on Linux on Z, see  [Deploying Docker compose on Linux on Z](https://www.ibm.com/docs/en/workload-automation/10.2.8?topic=compose-deploying-docker-linux-z)
 
 
 ## Getting Started
@@ -279,7 +279,7 @@ Consider the following example:
 
 For more information, see: 
 
-[Running batch reports from the command line interface](https://help.blueproddoc.com/workloadautomation/v1028/zos/src_man/eqqr1batchrepfromcommli.html)
+[Running batch reports from the command line interface](https://www.ibm.com/docs/en/workload-automation/10.2.8?topic=reports-running-batch-from-command-line-interface)
 
 
 ## Installing Automation Hub integrations  
@@ -335,7 +335,7 @@ This limitation applies to only to the stand-alone Docker environment.
 
 
 ## Additional Information
-For additional information about how to use the IBM Workload Automation, see the [online](https://help.hcl-software.com/workloadautomation/v1028/index.html) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
+For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.8) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
 
 
 ## License
