@@ -1,7 +1,7 @@
 
 
 
-# Workload Automation Server
+# Workload Automation Dynamic domain manager
 
 ## Introduction
 Workload Automation is a complete, modern solution for batch and real-time workload management. It enables organizations to gain complete visibility and control over attended or unattended workloads. 
@@ -15,24 +15,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 
 ## Supported tags
 - 10.2.8.00.20260727
-- 10.2.7.00.20260424.amd64
-- 10.2.6.00.20251212
-- 10.2.5.00.20250804
-- 10.2.4.00.20250423
-- 10.2.3.00.20241122
-- 10.2.2.00.20240424
-- 10.2.1.00.20231201
-- 10.2.0.00.20230728
-- 10.1.0.05.20240712
-- 10.1.0.04.20231201
-- 10.1.0.03.20230511-amd64
-- 10.1.0.02.20230301
-- 10.1.0.01.20221130
-- 10.1.0.00.20220722
-- 10.1.0.00.20220512
-- 10.1.0.00.20220304
-- 9.5.0.06.20220617
-- 9.5.0.05.20211217
+
  
  ## Supported platforms
  The supported operating systems are: Windows, Linux intel based 64-bit, and Linux on Z.
@@ -40,7 +23,7 @@ Docker adoption ensures standardization of your workload scheduling environment 
 ## Accessing the container images
 
 ### From the Entitled Registry
-You can access the Server container image from the Entitled Registry:
+You can access the Dynamic domain manager container image from the Entitled Registry:
 
 1. Access the entitled registry. Log in to [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) with the IBMid and password that are associated with the entitled software.
 
@@ -89,7 +72,7 @@ To start the container via Docker Compose, run the following command to clone th
 
 If you do not have GitHub installed in your environment, download the ZIP file from the main page of the repository:
 
-    Click on "Code" and select "Download ZIP"
+    Click "Code" and select "Download ZIP"
 
 If you want customize the installation parameters, modify the **docker-compose.yml** file.
 
@@ -97,7 +80,7 @@ Accept the product licenses by setting the **LICENSE** parameter to **"accept"**
 
 In the directory where  the **docker-compose.yml** file has been located, you can start the containers by running the following command:
 
-    docker-compose up -d wa-server wa-db2
+    docker-compose up -d wa-ddm wa-db2
 
 Once the command has been launched, be sure that the containers are started using the following command:
 
@@ -105,7 +88,7 @@ Once the command has been launched, be sure that the containers are started usin
 
 You can optionally check the container logs using the following commands:
 
-    docker-compose logs -f wa-server
+    docker-compose logs -f wa-ddm
      OR
     docker-compose logs -f wa-db2
 
@@ -141,7 +124,12 @@ To start the container from the command-line, launch the following command by ad
 		-e DB_ADMIN_PASSWORD=db_admin_password \
 			-v workload-automation-server-data:/home/wauser \
 		ibm-workload-automation-server:<version_number>.\<release_date>
-
+		-e DDM_MASTER=WA_FTA
+		-e DDM_MDM_HOSTNAME=wa-server
+		-e DDM_MDM_HTTPS_PORT=31116
+		-e DDM_DOMAIN=DYNAMICDM
+		-e DWBNAME=WA_DWB_DDM
+		-e AGT_NAME=WA_AGT_DDM			  
 > **Note:** The name of the image has to be the same as the one you loaded on your local workstation when you launched the docker load command.
 
 
@@ -152,35 +140,11 @@ To use custom certificates, modify the volume `<path_on_host_containing_certs>:/
       - tls.key
       - tls.crt
 ### Additional configuration
-The following information applies to both deploying with Docker compose and Docker run.
-
-> **Note**: Internal ports are predefined and must not be changed. External ports can be customized.
-
-If your server component uses a timezone different from the default timezone, then to avoid problems with the FINAL job stream, you must update MAKEPLAN within the DOCOMMAND, specifying the timezone parameter and value. For example, if you are using the America/Los Angeles timezone, then it must be specified as follows:
-
-    WA_WA-SERVER_XA#MAKEPLAN
-    DOCOMMAND "TODAY_DATE=`${UNISONHOME}/bin/datecalc today pic YYYYMMDD`; ${UNISONHOME}/MakePlan -to `${UNISONHOME}/bin/datecalc ${TODAY_DATE}070
-    0 + 1 day + 2 hours pic MM/DD/YYYY^HHTT` timezone America/Los_Angeles"
-    STREAMLOGON wauser
-    DESCRIPTION "Added by composer."
-    TASKTYPE OTHER
-    SUCCOUTPUTCOND CONDSUCC "(RC=0) OR (RC=4)"
-    RECOVERY STOP	
-    
-
-
-
-	 
-
-
-
-
-
-
+For information regarding additional configurations and integrations, refer to the Workload Automation Server readme.
 
 ## Configuration Variables
 
-The following table lists the configurable variables for the Server:
+The following table lists the configurable variables for the Dynamic domain manager:
 
 For example, specify the variable and its value as follows: LICENSE=ACCEPT
 
@@ -192,7 +156,6 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | WA_PASSWORD             | The *wauser* password to connect to the Server (the same password used for the installation of the Server)                                                                                                                                                                    | yes         | <password>           |
 | AGT_NAME                | The name to be assigned to the dynamic agent of the Server. The default value is WA_AGT                                                                                                                                                                                       | no          | WA_AGT               | 
 | DATE_FORMAT             | The date format defined in the plan. The default value is MM/DD/YYYY                                                                                                                                                                                                          | no          | MM/DD/YYYY           |
-| CREATE_PLAN             | If true, an automatic JnextPlan is executed at the same time of the container deployment. The default value is true                                                                                                                                                           | no          | true                 |
 | COMPANY_NAME            | The name of your Company. The default value is my-company                                                                                                                                                                                                                     | no          | my-company           |
 | LANG                    | The language of the container internal system. The supported language are: en (English), de (German), es (Spanish), fr (French), it (Italian), ja (Japanese), ko (Korean), pt_BR (Portuguese (BR)), ru (Russian), zh_CN (Simplified Chinese) and zh_TW (Traditional Chinese)  | yes         | en                   |
 | PUBLIC_HOSTNAME         | The Hostname or IP address that the external dynamic agents contact to reach the Server                                                                                                                                                                                       | yes         | <pubhostname>        |
@@ -203,6 +166,11 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | SERVERHOSTNAME          | The hostname on which the server is contacted by internal dynamic agents                                                                                                                                                                                                      | yes         | wa-server            |
 | SERVERPORT              | The port on which the server is contacted by internal dynamic agents                                                                                                                                                                                                          | yes         | 31116                |
 | SSL_PASSWORD              | The password to open the private key (tls.key)                                                                                                                                                                                                          | Only if you use custom certificates in PEM format         |                      |
+|DDM_MASTER              | The name of the CPU of the master domain manager                                                                                                                                                                                                        | yes       | WA_FTA                     |
+|DDM_MDM_HOSTNAME              | The hostname used by the dynamic domain manager to connect to the master domain manager                                                                                                                                                                                                          | yes         | wa-server                     |
+|DDM_MDM_HTTPS_PORT              | The port used by the dynamic domain manager to connect to the master domain manager                                                                                                                                                                                                       | yes        |   31116                   |
+|DDM_DOMAIN              | The domain used by the dynamic domain manager to register the components                                                                                                                                                                                                          | no        | DYNAMICDM                     |
+|DWBNAME              | The broker workstation used to identify the dynamic domain manager                                                                                                                                                                                                      | yes        | WA_DWB_DDM                     |
 
 - DB variables
 
@@ -229,7 +197,7 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | DB_ENABLE_PARTITIONING_OPTION | If true, the Oracle Partitioning feature is enabled. Valid only for Oracle, it is ignored by other databases. The default value is true                                                | no          | true                |
 | DB_SKIP_CHECK                 | If you want to skip db check set true. Validy only for Oracle                                                                                                                             | no          | true                |
    
-> **Note**: The Dynamic Agent component included in the Workload Automation Server container is deployed and configured with a gateway.
+> **Note**: The Dynamic Agent component included in the Workload Automation Dynamic domain manager container is deployed and configured with a gateway.
 
 - Open telemetry variables
 
@@ -243,25 +211,6 @@ For example, specify the variable and its value as follows: LICENSE=ACCEPT
 | otel_sdk_disabled             | Disables the SDK for all signals                                                                                                                                                          | no          | true                |
 
 
-## Single Sign-On (SSO) configuration
-
-To enable SSO between console and server, LTPA tokens must be the same. The following procedure explains how to create LTPA tokens to be shared between server and console (this procedure must be run only once and not on both systems). 
-
-To create new LTPA token, launch the following command:
-
-     docker run -i --rm -v <host_dir>:/output ibm-workload-automation-server:<version_number> /opt/wautils/wa_create_ltpa_keys.sh -p <keys_password>
-
-  where:
-  - **<host_dir>** is an existing folder on the local machine where docker runs
-  - **<keys_password>** is LTPA keys password ( for further details, see the [online](https://help.hcl-software.com/workloadautomation/v1028/distr/src_ad/awsadtdwcaccess.html) documentation).
-	
-The "ltpa.keys" and "wa_ltpa.xml" files are created in the local folder \<hostdir>.
-
-The "ltpa.keys" file must be placed into the volume that stores customized SSL certificates (on both server and console charts).
-
-In both server and console charts, useCustomizedCert property must be set on "true".
-
-The "wa_ltpa.xml" file must be placed in the volume that stores all custom liberty configuration (on both server and console charts).
 	
 ## Report CLI 	
 
@@ -281,20 +230,6 @@ For more information, see:
 
 [Running batch reports from the command line interface](https://www.ibm.com/docs/en/workload-automation/10.2.8?topic=reports-running-batch-from-command-line-interface)
 
-
-## Installing Automation Hub integrations  
-
-You can extend Workload Automation with a number of out-of-the-box integrations, or plug-ins. Complete documentation for the integrations is available on [Automation Hub](https://www.yourautomationhub.io/). For information about the procedure to deploy the integrations, browse to the Info tab for the integration of your choice and 
-scroll down to the Deploying an integration section.
-
-You can also extend Workload Automation with custom plug-ins or integrations that you create. For information about creating a custom plug-in and deploying the plug-in see [Workload Automation Lutist Development Kit](https://www.yourautomationhub.io/toolkit) on Automation Hub.
-
-## Metrics Monitoring
-
-Workload Automation exposes a number of metrics to provide you with insight into the state, health, and performance of your environment and infrastructure. You can access the product APIs for monitoring and retrieving insightful metrics data. The metrics are exposed and can be visualized with tools for displaying application metrics such as, the open source tool Grafana. If you use Grafana, you can take advantage of the preconfigured dashboard that is available with the deployment of the Dynamic Workload Console and the server  components. For more information about the metrics available, see [Metrics monitoring](https://help.hcl-software.com/workloadautomation/v1028/distr/src_ref/awsrgmonprom.html). In a Docker environment, by default, access to the metrics does not require authentication. However, if you want to specify a different user that can access the metrics securely using credentials, modify the prometheus.xml file that you will find automatically created in a Docker environment, adding the additional users.
-
-
-
 ## Supported Docker versions
 This image is officially supported on Docker version 19.xx.xx, or later.
 
@@ -306,33 +241,13 @@ See the [Docker installation documentation](https://docs.docker.com/engine/insta
   
 
 ## Limitations
-The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands such as Jnextplan, otherwise it might create some issues.
+The owner of all product files is the wauser user, thus the product does not run as root, but as wauser only. Do not perform the login as root to start processes or run other commands, otherwise it might create some issues.
 
 On amd64 and Linux on Z platforms.
 
 ## Troubleshooting
 
-If you switch the event processor and move it to a workstation different from the workstation where the dynamic domain manager resides, dynamic agents still point to the previous workstation and fail to contact the event processor.
-
-To work around this problem, edit the BrokerWorkstation.properties file as follows:
-
-on the master domain manager:
-
-
-     Broker.Workstation.evtproc.wa-server=<wa_server_name>
-
-on the backup domain manager:
-
-     Broker.Workstation.evtproc.wa-server-bkm=<wa_server_bkm_name>
-
-  where
-
-	<wa_server_name> is the hostname of the master domain manager
-
-	<wa_server_bkm_name> is the hostname of the backup domain manager
-
-This limitation applies to only to the stand-alone Docker environment.
-
+For information about troubleshooting processes, refer to the Workload Automation Server readme.
 
 ## Additional Information
 For additional information about how to use the IBM Workload Automation, see the [online](https://www.ibm.com/docs/en/workload-automation/10.2.8) documentation. For technical issues, search for Workload Scheduler or Workload Automation on [StackOverflow](http://stackoverflow.com/search?q=workload+scheduler).
